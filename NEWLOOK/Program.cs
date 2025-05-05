@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using NEWLOOK.Models.NewLook;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<NewLookContext>(options =>
+    options.UseSqlServer("Server=DESKTOP-H3FPO2I\\SQLEXPRESS;Database=NewLook;Trusted_Connection=True;"));
+
 
 var app = builder.Build();
 

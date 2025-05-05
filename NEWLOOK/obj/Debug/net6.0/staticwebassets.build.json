@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W+4/2g3eLv82stPzO5n40N/1nvwMJRRve6XARrW8SwM=",
+  "Hash": "IuzaQ18KEeZL58Jo3prS27vNfra0q3X0+4utxOj3b1c=",
   "Source": "NEWLOOK",
   "BasePath": "_content/NEWLOOK",
   "Mode": "Default",
@@ -255,6 +255,40 @@
       "OriginalItemSpec": "wwwroot\\images\\hero-bg.jpg"
     },
     {
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\icons\\comb.png",
+      "SourceId": "NEWLOOK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
+      "BasePath": "_content/NEWLOOK",
+      "RelativePath": "images/icons/comb.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\comb.png"
+    },
+    {
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\icons\\scissors.png",
+      "SourceId": "NEWLOOK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
+      "BasePath": "_content/NEWLOOK",
+      "RelativePath": "images/icons/scissors.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\scissors.png"
+    },
+    {
       "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\logo2.png",
       "SourceId": "NEWLOOK",
       "SourceType": "Discovered",
@@ -289,12 +323,12 @@
       "OriginalItemSpec": "wwwroot\\images\\logo35.png"
     },
     {
-      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\3.png",
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\1.jpg",
       "SourceId": "NEWLOOK",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
       "BasePath": "_content/NEWLOOK",
-      "RelativePath": "images/team/3.png",
+      "RelativePath": "images/team/1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -303,15 +337,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\team\\3.png"
+      "OriginalItemSpec": "wwwroot\\images\\team\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\team-image.jpg",
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\2.jpg",
       "SourceId": "NEWLOOK",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
       "BasePath": "_content/NEWLOOK",
-      "RelativePath": "images/team/team-image.jpg",
+      "RelativePath": "images/team/2.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -320,15 +354,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\team\\team-image.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\team\\2.jpg"
     },
     {
-      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\team-image01.jpg",
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\3.jpg",
       "SourceId": "NEWLOOK",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
       "BasePath": "_content/NEWLOOK",
-      "RelativePath": "images/team/team-image01.jpg",
+      "RelativePath": "images/team/3.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -337,7 +371,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\team\\team-image01.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\team\\3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\images\\team\\4.jpg",
+      "SourceId": "NEWLOOK",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\",
+      "BasePath": "_content/NEWLOOK",
+      "RelativePath": "images/team/4.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\team\\4.jpg"
     },
     {
       "Identity": "C:\\Users\\lenovo\\Desktop\\NEWLOOK\\NEWLOOK\\wwwroot\\js\\aos.js",
