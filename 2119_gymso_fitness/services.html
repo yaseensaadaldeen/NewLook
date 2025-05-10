@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Newlook Business</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="css/aos.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+<!-- AOS (Animate on Scroll) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- GLightbox -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+<script>
+    AOS.init();
+  </script>
+</head>
+<body  data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top less-left-padding">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html"><img src="images/4.png" alt=""/></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link smoothScroll">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#class" class="nav-link smoothScroll">Our Team</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link smoothScroll">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="#" class="fa-brands fa-tiktok"></a></li>
+                    <li><a href="#" class="fa-brands fa-instagram"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <br><br><br>
+    <section class="about section pt-2 pt-md-5" id="service"> 
+        <div class="container">
+            <div class="row mb-4 ">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+                        <ol class="breadcrumb bg-transparent px-0 mb-0">
+                          <li class="breadcrumb-item">
+                            <a href="index.html" style="color: var(--primary-color);">Home</a>
+                          </li>
+                          <li class="breadcrumb-item active text-light d-flex align-items-center" aria-current="page">
+                            Services
+                            <!-- Animated scissors -->
+                            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                              <g>
+                                <!-- Fixed blade -->
+                                <line x1="10" y1="10" x2="30" y2="30" />
+                                <!-- Rotating blade -->
+                                <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                              </g>
+                              <circle cx="10" cy="10" r="3" fill="currentColor" />
+                              <circle cx="10" cy="30" r="3" fill="currentColor" />
+                            </svg>
+                          </li>
+                        </ol>
+                      </nav>
+                      
+                      
+                      
+                    <h1 class="section-title" style="color: whitesmoke;">Our Services</h2>
+                        <p class="section-title1 animated-tagline" style="color: rgba(245, 245, 245, 0.867);" >
+                            "At NewLook Barber Shop, grooming isn’t just a service — it’s a transformation. From fresh cuts to signature treatments, we shape your style and boost your confidence."
+                          </p>                          
+                    <br>
+                    <div class="btn-group d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Filter buttons">
+                        <button class="btn filter-btn active" data-filter="all">
+                          <img src="images/icons/tool.png" class="icon"> All
+                        </button>
+                        <button class="btn filter-btn" data-filter="hair">
+                          <img src="images/icons/hair.svg" class="icon"> Haircuts
+                        </button>
+                        <button class="btn filter-btn" data-filter="beard">
+                          <img src="images/icons/beard.svg" class="icon"> Beard
+                        </button>
+                        <button class="btn filter-btn" data-filter="haircolour">
+                          <img src="images/icons/colour2.png" class="icon"> Colour
+                        </button>
+                        <button class="btn filter-btn" data-filter="hairtreatments">
+                          <img src="images/icons/hairtratment.png" class="icon"> Treatments
+                        </button>
+                        <button class="btn filter-btn" data-filter="skin">
+                          <img src="images/icons/facial-treatment.png" class="icon"> Facial
+                        </button>
+                        <button class="btn filter-btn" data-filter="footcare">
+                          <img src="images/icons/handcare.png" class="icon"> Foot/Hand
+                        </button>
+                        <button class="btn filter-btn" data-filter="grooming">
+                          <img src="images/icons/wedding-suit.png" class="icon"> Grooming
+                        </button>
+                        <button class="btn filter-btn" data-filter="hairsystems">
+                          <img src="images/icons/hair-comb.png" class="icon"> Hair Systems
+                        </button>
+                        <button class="btn filter-btn" data-filter="smpextensions">
+                          <img src="images/icons/hair-extension.png" class="icon"> SMP & Extensions
+                        </button>
+                      </div>
+                      
+                </div>
+            </div>
+    
+            <div class="row" id="gallery-items">
+
+                <!-- Haircut Service -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="hair" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">Classic Haircut</h5>
+                      <p class="card-text">Tailored cut with razor-sharp finishing to match your style.</p>
+                      <p class="card-meta text-muted">⏱ 30 mins |🏷️  $25</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="Classic Haircut" data-cost="25">Choose Service</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Beard Sculpting -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="beard" data-aos="flip-left"  data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">Beard Sculpting</h5>
+                      <p class="card-text">Precision shaping, lining, and grooming to elevate your look.</p>
+                      <p class="card-meta text-muted">⏱ 20 mins |🏷️  $18</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="Beard Sculpting" data-cost="18">Choose Service</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Facial -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="skin" data-aos="flip-right" data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">Facial Treatment</h5>
+                      <p class="card-text">Deep cleansing and detoxifying facial to refresh your skin.</p>
+                      <p class="card-meta text-muted">⏱ 40 mins |🏷️  $35</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="Facial Treatment" data-cost="35">Choose Service</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Hair Color -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="haircolour" data-aos="flip-left" data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">Hair Colour</h5>
+                      <p class="card-text">Customized hair coloring using premium products.</p>
+                      <p class="card-meta text-muted">⏱ 60 mins | 🏷️ $50</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="Hair Colour" data-cost="50">Choose Service</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Signature Package -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="grooming" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">NewLook Signature Package</h5>
+                      <p class="card-text">Complete grooming: haircut, beard, facial, and head massage.</p>
+                      <p class="card-meta text-muted">⏱ 90 mins | 🏷️ $85</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="NewLook Signature Package" data-cost="85">Choose Service</a>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Foot & Hand Care -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="footcare" data-aos="fade-in-up" data-aos-duration="600" data-aos-easing="ease-in-out">
+                    <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div class="card-body">
+                      <h5 class="card-title">Foot & Hand Care</h5>
+                      <p class="card-text">Manicure & pedicure designed for modern gentlemen.</p>
+                      <p class="card-meta text-muted">⏱ 45 mins | 🏷️ $30</p>
+                      <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="Foot & Hand Care" data-cost="30">Choose Service</a>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+              
+        </div>
+        <div id="cart-section" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; display: none;">
+            <h4><i class="fas fa-shopping-cart me-2"></i>Your Cart</h4>
+            <div id="cart-items"></div>
+            <hr>
+            <p>Total: $<span id="total-cost">0</span></p>
+            <a href="#checkout" class="btn btn-warning">Continue</a>
+            <button id="clear-cart" class="btn btn-danger mt-2">Clear Cart</button>
+        </div>
+    </section>
+    
+     <!-- FOOTER -->
+     <footer class="site-footer">
+        <div class="container">
+          <div class="row align-items-center text-center text-md-left">
+      
+            <!-- Left Column: Copyright -->
+            <div class="col-md-4 mb-3 mb-md-0">
+              <p class="mb-0">&copy; 2025 NewLook Business Co. All Rights Reserved.</p>
+            </div>
+      
+            <!-- Center Column: Contact Info -->
+            <div class="col-md-4 mb-3 mb-md-0">
+              <p class="mb-1"><i class="fa fa-envelope mr-2"></i> <a href="mailto:info@newlook-business.com">info@newlook-business.com</a></p>
+              <p class="mb-0"><i class="fa fa-phone mr-2"></i> <a href="https://wa.me/971586807722" target="_blank">+971 586 807 722</a></p>
+              <p class="mb-0"><i class="fa fas fa-location-arrow mr-2"></i> <a href="https://maps.app.goo.gl/zeMd7qRSQRQzd32TA" target="_blank">Umm Al sheif -SKB Plaza properties Office No: 104 - Dubai - United Arab Emirates</a></p>
+              
+            </div>
+      
+            <!-- Right Column: Social Links -->
+            <div class="col-md-4">
+              <div class="social-links d-flex justify-content-center justify-content-md-end">
+                <!-- <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a> -->
+                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </footer>
+
+     <!-- SCRIPTS -->
+     <script src="~/Scripts/jquery.min.js"></script>
+     <script src="~/Scripts/bootstrap.min.js"></script>
+     <script src="~/Scripts/aos.js"></script>
+     <script src="~/Scripts/smoothscroll.js"></script>
+     <script src="~/Scripts/custom.js"></script>
+     <script>
+        window.addEventListener('load', function() {
+            document.querySelector('.navbar-brand img').classList.add('loaded');
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        // Add active class to the clicked button
+        button.classList.add('active');
+
+        // Filter gallery items based on the selected category
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+    </script>
+   <script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+
+            // Button highlight
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const items = document.querySelectorAll('.gallery-item');
+            let delay = 0;
+
+            items.forEach(item => {
+                const match = filter === 'all' || item.getAttribute('data-category') === filter;
+                
+                // Smooth staggered effect
+                setTimeout(() => {
+                    if (match) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                }, delay);
+                if (match) delay += 100;
+            });
+        });
+    });
+
+    // On initial page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, i) => {
+            setTimeout(() => item.classList.add('show'), i * 100);
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+</script>
+
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    zoomable: true
+  });
+
+  // Filtering logic
+  document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.classList.add('show');
+        } else {
+          item.classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get elements
+    const chooseButtons = document.querySelectorAll('.choose-service'); // Selecting all service choice buttons
+    const cartSection = document.getElementById('cart-section');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalCostElement = document.getElementById('total-cost');
+    const clearCartButton = document.getElementById('clear-cart');
+
+    let cartItems = [];
+    let totalCost = 0;
+
+    // Function to open the cart section
+    function openCart() {
+        cartSection.style.display = 'block';
+        setTimeout(() => {
+            cartSection.classList.add('open');
+        }, 10);
+    }
+
+    // Function to close the cart section
+    function closeCart() {
+        cartSection.classList.remove('open');
+        setTimeout(() => {
+            cartSection.style.display = 'none';
+        }, 300);
+    }
+
+    
+
+    // Function to update the cart display
+    function updateCart() {
+    cartItemsContainer.innerHTML = '';
+
+    cartItems.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('service-item');
+        itemElement.innerHTML = `
+            <span>${item.name}</span>
+            <span>$${item.cost}</span>
+    <button class="remove-item" data-index="${cartItems.indexOf(item)}">&times;</button>
+        `;
+        cartItemsContainer.appendChild(itemElement);
+    });
+
+    totalCostElement.innerText = cartItems.reduce((sum, item) => sum + item.cost, 0).toFixed(2);
+
+    // Attach event listeners for remove buttons
+    document.querySelectorAll('.remove-item').forEach(button => {
+        button.addEventListener('click', function () {
+            const index = parseInt(this.dataset.index);
+            totalCost -= cartItems[index].cost;
+            cartItems.splice(index, 1);
+            updateCart();
+        });
+    });
+}
+
+
+    // Event listener for choosing services
+    chooseButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const serviceName = this.dataset.name; // Get service name from data-name
+            const serviceCost = parseFloat(this.dataset.cost); // Get service cost from data-cost
+
+            // Add the service to the cart
+            cartItems.push({ name: serviceName, cost: serviceCost });
+            totalCost += serviceCost;
+
+            updateCart();
+            openCart();  // Show cart section when a service is added
+        });
+    });
+
+    // Event listener to clear the cart
+    clearCartButton.addEventListener('click', function() {
+        cartItems = [];
+        totalCost = 0;
+        updateCart();
+        closeCart();  // Optionally close the cart when cleared
+    });
+});
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap 4 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

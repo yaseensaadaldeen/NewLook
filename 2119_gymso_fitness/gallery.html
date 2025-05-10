@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Newlook Business</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="css/aos.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-gymso-style.css">
+<!-- AOS (Animate on Scroll) -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- GLightbox -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+<script>
+    AOS.init();
+  </script>
+</head>
+<body  data-spy="scroll" data-target="#navbarNav" data-offset="50">
+
+    <!-- MENU BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top less-left-padding">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html"><img src="images/4.png" alt=""/></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-lg-auto">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link smoothScroll">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link smoothScroll">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#class" class="nav-link smoothScroll">Our Team</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#schedule" class="nav-link smoothScroll">Gallery</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link smoothScroll">Contact Us</a>
+                    </li>
+                </ul>
+
+                <ul class="social-icon ml-lg-3">
+                    <li><a href="#" class="fa-brands fa-tiktok"></a></li>
+                    <li><a href="#" class="fa-brands fa-instagram"></a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <br><br><br>
+    <section class="about section pt-2 pt-md-5" id="gallery"> 
+        <div class="container">
+            <div class="row mb-4 ">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+                        <ol class="breadcrumb bg-transparent px-0 mb-0">
+                          <li class="breadcrumb-item">
+                            <a href="index.html" style="color: var(--primary-color);">Home</a>
+                          </li>
+                          <li class="breadcrumb-item active text-light d-flex align-items-center" aria-current="page">
+                            Gallery
+                            <!-- Animated scissors -->
+                            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                              <g>
+                                <!-- Fixed blade -->
+                                <line x1="10" y1="10" x2="30" y2="30" />
+                                <!-- Rotating blade -->
+                                <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                              </g>
+                              <circle cx="10" cy="10" r="3" fill="currentColor" />
+                              <circle cx="10" cy="30" r="3" fill="currentColor" />
+                            </svg>
+                          </li>
+                        </ol>
+                      </nav>
+                      
+                      
+                      
+                    <h1 class="section-title" style="color: whitesmoke;">Our Gallery</h2>
+                        <p class="section-title1 animated-tagline" style="color: rgba(245, 245, 245, 0.867);" >
+                            "Excellence isn't our goal — it's our standard. Just ask our satisfied clients."
+                          </p>                          
+                    <br>
+                    <div class="btn-group" role="group" aria-label="Filter buttons">
+                        <button class="btn  filter-btn active" data-filter="all">All</button>
+                        <!-- <button class="btn  filter-btn" data-filter="hair">Hair</button> -->
+                        <button class="btn filter-btn" data-filter="hair"><img src="images/icons/hair.svg" class="icon"> Hair</button>
+
+                        <!-- <button class="btn  filter-btn" data-filter="chin">Chin</button> -->
+                        <button class="btn filter-btn" data-filter="beard"><img src="images/icons/beard.svg" class="icon"> Beard</button>
+                        <button class="btn filter-btn" data-filter="mustache"><img src="images/icons/mustache.svg" class="icon"> Mustache</button>
+
+                        <!-- <button class="btn  filter-btn" data-filter="care">Care</button> -->
+                        <button class="btn filter-btn" data-filter="hair"><img src="images/icons/care.svg" class="icon"> Care</button>
+                        <!-- edit icon -->
+                        <button class="btn filter-btn" data-filter="hair"><img src="images/icons/colour2.png" class="icon"> Colour</button>
+                        
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row" id="gallery-items">
+                <!-- Example Hair Image -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="hair" data-aos="zoom-in">
+                    <div class="card">
+                        <a href="images/class/cardio-class.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/class/cardio-class.jpg" class="card-img-top" alt="Hair">   
+                            <img src="icons/scissors.svg" class="bg-scissors" />
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 gallery-item" data-category="hair" data-aos="zoom-in">
+                    <div class="card">
+                        <a href="images/team/team-image.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/team/team-image.jpg" class="card-img-top" alt="Hair">
+                        </a>
+                    </div>
+                </div>
+                <!-- Example Chin Image -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="beard" data-aos="fade-up">
+                    <div class="card">
+                        <a href="images/class/crossfit-class.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/class/crossfit-class.jpg" class="card-img-top" alt="beard">
+                        </a>
+                    </div>
+                </div>
+    
+                <div class="col-md-4 mb-4 gallery-item" data-category="beard" data-aos="fade-up">
+                    <div class="card">
+                        <a href="images/team/team-image01.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/team/team-image01.jpg" class="card-img-top" alt="beard">
+                        </a>
+                    </div>
+                </div>
+                <!-- Example Care Image -->
+                <div class="col-md-4 mb-4 gallery-item" data-category="care" data-aos="zoom-in-up">
+                    <div class="card">
+                        <a href="images/class/yoga-class.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/class/yoga-class.jpg" class="card-img-top" alt="Care">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 gallery-item" data-category="mustache" data-aos="zoom-in-up">
+                    <div class="card">
+                        <a href="images/class/yoga-class.jpg" class="glightbox" data-gallery="gallery">
+                            <img src="images/class/yoga-class.jpg" class="card-img-top" alt="mustache">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+     <!-- FOOTER -->
+     <footer class="site-footer">
+        <div class="container">
+          <div class="row align-items-center text-center text-md-left">
+      
+            <!-- Left Column: Copyright -->
+            <div class="col-md-4 mb-3 mb-md-0">
+              <p class="mb-0">&copy; 2025 NewLook Business Co. All Rights Reserved.</p>
+            </div>
+      
+            <!-- Center Column: Contact Info -->
+            <div class="col-md-4 mb-3 mb-md-0">
+              <p class="mb-1"><i class="fa fa-envelope mr-2"></i> <a href="mailto:info@newlook-business.com">info@newlook-business.com</a></p>
+              <p class="mb-0"><i class="fa fa-phone mr-2"></i> <a href="https://wa.me/971586807722" target="_blank">+971 586 807 722</a></p>
+              <p class="mb-0"><i class="fa fas fa-location-arrow mr-2"></i> <a href="https://maps.app.goo.gl/zeMd7qRSQRQzd32TA" target="_blank">Umm Al sheif -SKB Plaza properties Office No: 104 - Dubai - United Arab Emirates</a></p>
+              
+            </div>
+      
+            <!-- Right Column: Social Links -->
+            <div class="col-md-4">
+              <div class="social-links d-flex justify-content-center justify-content-md-end">
+                <!-- <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a> -->
+                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+      </footer>
+
+     <!-- SCRIPTS -->
+     <script src="~/Scripts/jquery.min.js"></script>
+     <script src="~/Scripts/bootstrap.min.js"></script>
+     <script src="~/Scripts/aos.js"></script>
+     <script src="~/Scripts/smoothscroll.js"></script>
+     <script src="~/Scripts/custom.js"></script>
+     <script>
+        window.addEventListener('load', function() {
+            document.querySelector('.navbar-brand img').classList.add('loaded');
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        // Add active class to the clicked button
+        button.classList.add('active');
+
+        // Filter gallery items based on the selected category
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+    </script>
+   <script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+
+            // Button highlight
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const items = document.querySelectorAll('.gallery-item');
+            let delay = 0;
+
+            items.forEach(item => {
+                const match = filter === 'all' || item.getAttribute('data-category') === filter;
+                
+                // Smooth staggered effect
+                setTimeout(() => {
+                    if (match) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                }, delay);
+                if (match) delay += 100;
+            });
+        });
+    });
+
+    // On initial page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, i) => {
+            setTimeout(() => item.classList.add('show'), i * 100);
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+</script>
+
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true
+  });
+
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    zoomable: true
+  });
+
+  // Filtering logic
+  document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.classList.add('show');
+        } else {
+          item.classList.remove('show');
+        }
+      });
+    });
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap 4 JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap 5 JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

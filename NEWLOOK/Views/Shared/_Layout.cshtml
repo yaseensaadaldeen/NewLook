@@ -44,7 +44,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="Team" class="nav-link smoothScroll">Our Team</a>
+                        <a href="Teams" class="nav-link smoothScroll">Our Team</a>
                     </li>
 
                     <li class="nav-item">
@@ -68,6 +68,26 @@
 
         </div>
     </nav>
+    <div class="container mt-5 pt-5">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["SuccessMessage"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["ErrorMessage"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    </div>
         @RenderBody()
         <hr />
         <footer class="site-footer">

@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 Tooplate 2119 Gymso Fitness
 
@@ -74,10 +74,11 @@ https://www.tooplate.com/view/2119-gymso-fitness
      TYPOGRAPHY              
   -----------------------------------------*/
 
-  h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-thin);
     line-height: normal;
-  }
+    color: #C5B358 !important;
+}
 
 h1 {
     font-size: var(--h1-font-size);
@@ -542,10 +543,13 @@ h1 {
     margin: 1.3rem 0;
   }
 
-  .form-control:focus {
-    box-shadow: none;
-    border-color: var(--dark-color);
-  }
+    .form-control:focus {
+        color: #495057;
+        background-color: #676666;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    }
 
   button#submit-button {
     background: var(--dark-color);
@@ -970,3 +974,178 @@ h1 {
     left: 5%;
     transform: rotate(0deg);
 }
+
+.control-label {
+    color: white;
+}
+.form-control {
+    background-color: #444746;
+    color: white !important;
+}
+
+.alert {
+    text-align: center
+}
+
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dialog-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+}
+
+.success-image {
+    width: 100px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.input-groups {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.center-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row
+}
+
+.signup-border {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    margin-right: 20%;
+    margin-left: 20%;
+    padding: 20px;
+}
+
+.alert-danger {
+    color: #85221c;
+    background-color: #ffd9d7;
+    border-color: #ffcac7;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.span- {
+    margin: 5px;
+}
+.golden-btn {
+    position: relative;
+    display: block;
+    margin: 30px auto; /* Centers horizontally */
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ffd700 0%, #daa520 50%, #b8860b 100%);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: fit-content;
+}
+
+.golden-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(218, 165, 32, 0.6);
+    background: linear-gradient(135deg, #ffdf00 0%, #e6b800 50%, #cd950c 100%);
+}
+
+.golden-btn:active {
+    transform: translateY(1px);
+}
+
+.golden-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+}
+
+.golden-btn:hover::before {
+    left: 100%;
+}
+
+/* Optional: Add a subtle border glow */
+.golden-btn::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 50px;
+    z-index: -1;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+    100% { opacity: 0.6; }
+}
+/* Add to your site's CSS file */
+.team-card {
+    position: relative;
+    /* existing styles */
+}
+
+.remove-button-form {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+}
+
+.remove-button {
+    background-color: rgba(255, 0, 0, 0.8);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+    .remove-button:hover {
+        background-color: red;
+    }

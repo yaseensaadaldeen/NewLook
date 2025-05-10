@@ -1,0 +1,50 @@
+﻿@model IEnumerable<NEWLOOK.Models.NewLook.Team>
+@{
+    ViewData["Title"] = "Our Creative Team";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+  
+
+}
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
+    var userName = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+}
+
+
+<h1>@ViewData["Title"]</h1>
+@if (userId.HasValue)
+{
+    <p>
+        <button class="golden-btn">  <a asp-action="Create">Create New</a></button>
+    </p>
+}
+<div class="team-container">
+    @foreach (var member in Model)
+    {
+        <div class="team-card">
+            <img src="@member.ImageLink" alt="@member.EmpName" class="member-image">
+            <div class="member-info">
+                <h3 class="member-name">@member.EmpName</h3>
+                <p class="member-detail"><strong>Nationality:</strong> @member.Nationality</p>
+                <p class="member-detail"><strong>Experience:</strong> @member.Experiances</p>
+                <p class="member-detail"><strong>Languages:</strong> @member.Languages</p>
+            </div>
+
+            <img src="~/images/icons/scissors.png" class="tool-animation scissors-left" alt="Scissors">
+            <img src="~/images/icons/scissors.png" class="tool-animation scissors-right" alt="Scissors">
+            <img src="~/images/icons/comb.png" class="tool-animation comb-top" alt="Comb">
+            <img src="~/images/icons/comb.png" class="tool-animation comb-bottom" alt="Comb">
+
+            @if (userId.HasValue)
+            {
+                <form asp-action="Delete" asp-controller="Teams" method="post" class="remove-button-form" onsubmit="return confirm('Are you sure you want to remove this team member?');">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@member.Id" />
+                    <button type="submit" class="remove-button">&times;</button>
+                </form>
+            }
+
+        </div>
+    }
+</div>

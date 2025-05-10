@@ -1,0 +1,26 @@
+﻿@model NEWLOOK.Models.NewLook.MstUser
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="signup-border text-white">
+    <h2>Register</h2>
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="UserName" class="text-white"></label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Pswd" class="text-white"></label>
+            <input asp-for="Pswd" type="password" class="form-control" />
+            <span asp-validation-for="Pswd" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="golden-btn">Register</button>
+    </form>
+</div>
