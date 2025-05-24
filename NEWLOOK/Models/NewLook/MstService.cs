@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NEWLOOK.Models.NewLook;
 
@@ -11,11 +12,11 @@ public partial class MstService
 
     public string SerDesc { get; set; } = null!;
 
-    public int TeamId { get; set; }
+    public string ServiceIconImage { get; set; } = null!;
+    [NotMapped]
+    public IFormFile? IconFile { get; set; }
 
     public virtual ICollection<MstServiceImage> MstServiceImages { get; set; } = new List<MstServiceImage>();
 
     public virtual ICollection<ServiceType> ServiceTypes { get; set; } = new List<ServiceType>();
-
-    public virtual Team Team { get; set; } = null!;
 }

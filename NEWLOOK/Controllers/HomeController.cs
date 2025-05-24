@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NEWLOOK.Models;
+using NEWLOOK.Models.NewLook;
 using System.Diagnostics;
 
 namespace NEWLOOK.Controllers
@@ -7,15 +8,22 @@ namespace NEWLOOK.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly NewLookContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(NewLookContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var viewModel = new HomeViewModel
+            {
+                Galleries = _context.Galleries.OrderBy(g => g.Id).Take(6).ToList(),
+                Teams = _context.Teams.OrderBy(g => g.Id).Take(3).ToList(),
+                ServicesType = _context.ServiceTypes.OrderBy(g => g.Id).Take(3).ToList()
+            };
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

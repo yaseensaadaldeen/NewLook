@@ -1,8 +1,278 @@
-﻿@{
+﻿@model NEWLOOK.Models.HomeViewModel
+@* @model IEnumerable<NEWLOOK.Models.HomeViewModel> *@
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero d-flex flex-column justify-content-center align-items-center" id="home">
+    <!-- Video Background -->
+    <video autoplay muted playsinline class="hero-video">
+        <source src="~/images/homevid/barberequip.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Dark Overlay -->
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto col-12">
+                <div class="hero-text mt-5 text-center">
+                    <h6 data-aos="fade-up" data-aos-delay="300" class="text-gold">Redefine Your Grooming Experience</h6>
+
+                    <h1 class="text-white" data-aos="fade-up" data-aos-delay="500" style="font-family: 'Cinzel', serif;">
+                        Welcome to NewLook Barbershop
+                    </h1>
+
+                    <a href="services" class="btn btn-gold mt-3" data-aos="fade-up" data-aos-delay="600">Book Appointment</a>
+                    <a href="AboutUs" class="btn btn-outline-gold mt-3" data-aos="fade-up" data-aos-delay="700">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="feature" id="feature">
+    <div class="container">
+        <div class="row">
+
+            <div class="d-flex flex-column justify-content-center ml-lg-auto mr-lg-5 col-lg-5 col-md-6 col-12">
+                <h2 class="mb-3 text-white" data-aos="fade-up">First time at NewLook ?</h2>
+
+                <h6 class="mb-4 text-white" data-aos="fade-up">Enjoy your first haircut here</h6>
+
+                <p data-aos="fade-up" data-aos-delay="200">Classic Cuts is a premium barbershop offering timeless styles and modern grooming. Walk-ins welcome or book online. Your look, our craft.</p>
+
+                <a href="services" class="btn custom-btn bg-color mt-3" data-aos="fade-up" data-aos-delay="300">Book your haircut</a>
+                <!-- data-toggle="modal" data-target="#membershipForm" -->
+            </div>
+
+            <div class="mr-lg-auto mt-3 col-lg-4 col-md-6 col-12">
+                <div class="classy-hours text-white">
+                    <h2 class="mb-4">Working Hours</h2>
+                    <ul class="list-unstyled">
+                        <li data-day="0">Sunday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="1">Monday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="2">Tuesday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="3">Wednesday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="4">Thursday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="5">Friday: 10:00 AM – 11:00 PM</li>
+                        <li data-day="6">Saturday: 10:00 AM – 11:00 PM</li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about section" id="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="mt-lg-5 mb-lg-0 mb-4 col-lg-5 col-md-10 mx-auto col-12">
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300" style="color: whitesmoke;">Who We Are</h2>
+
+                <p data-aos="fade-up" data-aos-delay="400" style="color: rgba(245, 245, 245, 0.621);">NewLook Barbershop is not just a grooming destination—it's a movement.</p>
+
+                <p data-aos="fade-up" data-aos-delay="500" style="color: rgba(245, 245, 245, 0.621) ;font-size: 20px;">We’re on a relentless pursuit to redefine the art of barbering.At NewLook Barbershop, it's all about mastering the craft, blending precision with passion, and delivering an unparalleled grooming experience that goes beyond expectations</p>
+
+            </div>
+
+            <div class="col-md-6 text-center" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="images/about/Shop 2.jpg" alt="Barber Chair"
+                     class="img-fluid rounded-4 shadow hover-zoom"
+                     style="max-height: 350px; width: 100%; object-fit: cover;">
+               
+            </div>
+
+
+            <div class="col-12 text-center">
+                <a href="services" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">
+                    Show Full Story
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- CLASS -->
+<section class="about section" id="class">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center mb-5">
+                <!-- <h6 data-aos="fade-up">Get A Perfect Body</h6> -->
+
+                <h2 data-aos="fade-up" data-aos-delay="200" style="color: whitesmoke;">Our Team</h2><br>
+                <h6 data-aos="fade-up" style="color: whitesmoke;">The crew behind the craft.</h6><br>
+
+                <div class="team-container">
+                    @foreach (var member in Model.Teams)
+                    {
+                        <div class="team-card">
+                            <img src="@member.ImageLink" alt="@member.EmpName" class="member-image">
+                            <div class="member-info">
+                                <h3 class="member-name">@member.EmpName</h3>
+                                <p class="member-detail"><strong>Nationality:</strong> @member.Nationality</p>
+                                <p class="member-detail"><strong>Experience:</strong> @member.Experiances Years</p>
+                                <p class="member-detail"><strong>Languages:</strong> @member.Languages</p>
+                            </div>
+                            <img src="images/icons/scissors.png" class="tool-animation scissors-left" alt="Scissors">
+                            <img src="images/icons/scissors.png" class="tool-animation scissors-right" alt="Scissors">
+                            <img src="images/icons/comb.png" class="tool-animation comb-top" alt="Comb">
+                            <img src="images/icons/comb.png" class="tool-animation comb-bottom" alt="Comb">
+                        </div>
+                    }
+            </div>
+
+                <div class="col-12 text-center">
+                    <a href="services" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">
+                        The Crew
+                    </a>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SCHEDULE -->
+<section class="schedule section" id="schedule">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 col-12 text-center">
+                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Our Services</h2>
+
+                <h6 data-aos="fade-up" style="color: whitesmoke;">At NewLook Barber Shop, grooming isn’t just a service.</h6>
+            </div>
+            
+            <div class="col-lg-12 py-5 col-md-12 col-12 row">
+                @foreach (var service in Model.ServicesType)
+                {
+
+                    <div class="col-md-4 mb-4" data-category="hair" data-aos="fade-up" style="cursor: pointer;" onclick="location.href='services'">
+                        <div class="card service-card text-light h-100" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <div class="card-body">
+                                <h5 class="card-title">@service.SerTypeName</h5>
+                                <p class="card-text">@service.SerTypeDesc</p>
+                                <p class="card-meta text-muted">⏱ @service.SerTime |🏷️ $@service.Price</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                }
+             
+            </div>
+            <div class="col-12 text-center">
+                <a href="services" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">
+                    Explore All Services
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- GALLERY -->
+<section class="schedule section" id="gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white" data-aos="fade-up" data-aos-delay="200">Our Gallery</h2>
+                <h6 data-aos="fade-up" style="color: whitesmoke;">"Where every cut tells a story."</h6>
+                <br>
+            </div>
+
+            <div class="col-12">
+                <div class="row" id="gallery-items">
+                    @foreach (var gallery in Model.Galleries)
+                    {
+                        <div class="col-md-4 mb-4" data-category="hair" data-aos="zoom-in">
+                            <div class="card">
+                                <a href="@gallery.ImageLink" class="glightbox" data-gallery="gallery">
+                                    <img src="@gallery.ImageLink" class="card-img-top" alt="Hair">
+                                    <img src="~/images/icons/scissors.png" class="bg-scissors" />
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 text-center">
+                <a href="gallery" class="btn custom-btn mt-3" data-aos="fade-up" data-aos-delay="600">
+                    View Full Gallery
+                </a>
+            </div>
+        </div>
+    </div>
+
+    
+</section>
+
+<!-- CONTACT -->
+<section class="schedule section" id="contact">
+    <div class="container">
+        <div class="row">
+
+            <div class="ml-auto col-lg-5 col-md-6 col-12">
+                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="200">Feel free to ask anything</h2>
+
+                <form action="#" method="post" class="contact-form webform" data-aos="fade-up" data-aos-delay="400" role="form">
+                    <input type="text" class="form-control" name="cf-name" placeholder="Name">
+
+                    <input type="email" class="form-control" name="cf-email" placeholder="Email">
+
+                    <textarea class="form-control" rows="5" name="cf-message" placeholder="Message"></textarea>
+
+                    <button type="submit" class="form-control" id="submit-button" name="submit">Send Message</button>
+                </form>
+            </div>
+
+            <div class="mx-auto mt-4 mt-lg-0 mt-md-0 col-lg-5 col-md-6 col-12">
+                <h2 class="mb-4 pb-2" data-aos="fade-up" data-aos-delay="600">Where you can <span>find us</span></h2>
+
+                <p data-aos="fade-up" data-aos-delay="800" style="color: rgba(245, 245, 245, 0.621);"><i class="fa fas fa-map-marker-alt"></i> Umm Al sheif -SKB Plaza properties Office No: 104 - Dubai - United Arab Emirates</p>
+                <!-- How to change your own map point
+                    1. Go to Google Maps
+                    2. Click on your location point
+                    3. Click "Share" and choose "Embed map" tab
+                    4. Copy only URL and paste it within the src="" field below
+                -->
+                <div class="google-map" data-aos="fade-up" data-aos-delay="900">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.310664060015!2d55.2032153!3d25.125185800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b86b3f70de5%3A0x8937aa5b54d1fd7d!2sNew%20Look%20Business!5e0!3m2!1sen!2s!4v1746466624200!5m2!1sen!2s" width="1920" height="250" frameborder="0" style="border:0;" allowfullscreen="" style="border:0; filter: grayscale(50%) brightness(90%) contrast(140%); border-radius: 20px;" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const today = new Date().getDay();
+      const items = document.querySelectorAll(".classy-hours ul li");
+      items.forEach(item => {
+        if (parseInt(item.getAttribute("data-day")) === today) {
+          item.classList.add("today");
+        }
+      });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      zoomable: true,
+      closeButton: true
+    });
+</script>

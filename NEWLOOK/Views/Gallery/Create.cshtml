@@ -1,0 +1,30 @@
+﻿@model NEWLOOK.Models.NewLook.Gallery
+@{
+    ViewData["Title"] = "Add Gallery Image";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Gallery Image</h2>
+<hr />
+<div class="signup-border">
+    <form asp-action="Create" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="ImageFile" class="control-label">Upload Image</label>
+            <input asp-for="ImageFile" type="file" class="form-control" />
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Upload" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Back</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

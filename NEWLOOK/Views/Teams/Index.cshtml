@@ -10,9 +10,33 @@
     var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
     var userName = HttpContextAccessor.HttpContext.Session.GetString("UserName");
 }
+<div class="container">
 
 
-<h1>@ViewData["Title"]</h1>
+<nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+    <ol class="breadcrumb bg-transparent px-0 mb-0">
+        <li class="breadcrumb-item">
+            <a href="@Url.Action("Index", "Home")" style="color: var(--primary-color);">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" style="    fill: var(--primary-color);">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+            </svg>
+            <a href="#" style="color: var(--primary-color);">
+                Team
+            </a>
+            <!-- Animated scissors -->
+            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                <g>
+                    <line x1="10" y1="10" x2="30" y2="30" />
+                    <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                </g>
+                <circle cx="10" cy="10" r="3" fill="currentColor" />
+                <circle cx="10" cy="30" r="3" fill="currentColor" />
+            </svg>
+        </li>
+
+    </ol>
+</nav>
+    <h1>@ViewData["Title"]</h1>
 @if (userId.HasValue)
 {
     <p>
@@ -47,4 +71,5 @@
 
         </div>
     }
+</div>
 </div>

@@ -1,0 +1,47 @@
+﻿@model NEWLOOK.Models.NewLook.MstService
+
+@{
+    ViewData["Title"] = "Create Master Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="about section pt-2 pt-md-5" id="mstser-create">
+    <div class="container">
+        <h1>Create Master Service</h1>
+        <hr />
+        <div class="signup-border">
+            <form asp-action="CreateMasterService" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="SerName" class="control-label"></label>
+                    <input asp-for="SerName" class="form-control" />
+                    <span asp-validation-for="SerName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IconFile" class="control-label">Service Icon</label>
+                    <input type="file" name="IconFile" id="IconFile" class="form-control" accept="image/*" />
+                    <input type="hidden" asp-for="ServiceIconImage" id="iconPath" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        document.getElementById('IconFile').addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                const fileName = file.name;
+                document.getElementById('iconPath').value = '/uploads/icons/' + fileName;
+            }
+        });
+    </script>
+}

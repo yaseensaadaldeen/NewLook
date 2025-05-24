@@ -1,0 +1,291 @@
+﻿@using NEWLOOK.Models.NewLook
+@model List<MstService>
+@{
+    ViewData["Title"] = "Our Creative Team";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
+    var userName = HttpContextAccessor.HttpContext.Session.GetString("UserName");
+}
+<section class="about section pt-2 pt-md-5" id="service">
+    <div class="container">
+        <div class="row mb-4 ">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+                    <ol class="breadcrumb bg-transparent px-0 mb-0">
+                        <li class="breadcrumb-item">
+                            <a href="@Url.Action("Index", "Home")" style="color: var(--primary-color);">Home</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" style="    fill: var(--primary-color);">
+                                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+                            </svg>
+                            <a href="#" style="color: var(--primary-color);">
+                                Services
+                            </a>
+                            <!-- Animated scissors -->
+                            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                                <g>
+                                    <line x1="10" y1="10" x2="30" y2="30" />
+                                    <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                                </g>
+                                <circle cx="10" cy="10" r="3" fill="currentColor" />
+                                <circle cx="10" cy="30" r="3" fill="currentColor" />
+                            </svg>
+                        </li>
+
+                    </ol>
+                </nav>
+
+
+
+                <h1 class="section-title" style="color: whitesmoke;" >
+                Our Services</h1>
+                <p class="section-title1 animated-tagline" style="color: rgba(245, 245, 245, 0.867);">
+                    At NewLook Barber Shop, grooming isn’t just a service — it’s a transformation. From fresh cuts to signature treatments, we shape your style and boost your confidence.
+                </p>
+                @if (userId.HasValue)
+                {
+                    <div class="d-flex gap-2">
+                        <a asp-action="CreateMasterService" class="golden-btn" >Add Main Service</a>
+                        <a asp-action="CreateSubService" class="golden-btn" >Add Sub-Service</a>
+                    </div>
+                }
+                <br>
+                <div class="filter-buttons-wrapper overflow-auto">
+                    <div class="btn-group d-flex flex-nowrap  gap-2" role="group" aria-label="Filter buttons" style="width: 100%;">
+                        <button class="btn filter-btn active text-center" data-filter="all">
+                            <img src="images/icons/tool.png" class="icon me-2"> All
+                        </button>
+                        @foreach (var mainService in Model)
+                        {
+                            <div class="position-relative">
+                                <button class="btn filter-btn d-flex align-items-center justify-content-center text-center w-100 h-100" data-filter="@mainService.SerName">
+                                    <img src="@mainService.ServiceIconImage" class="icon me-2"> @mainService.SerName
+                                </button>
+                              
+
+                                @if (userId.HasValue)
+                                {
+                                    <form asp-action="DeleteMasterService" asp-controller="Services" method="post" class="remove-button-form" onsubmit="return confirm('Are you sure you want to remove this Main Service this will delete the service and all of its sub services?');">
+                                        @Html.AntiForgeryToken()
+                                        <input type="hidden" name="id" value="@mainService.Id" />
+                                        <button type="submit" class="remove-button">&times;</button>
+                                    </form>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="gallery-items">
+            @foreach (var mainService in Model)
+            {
+                @foreach (var subService in mainService.ServiceTypes)
+                {
+                    <!-- Haircut Service -->
+                    <div class="col-md-4 mb-4 gallery-item" data-category="@subService.MstSer.SerName" >
+                        <div class="card service-card text-light h-100 position-relative" style="background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.1);">
+                         
+                            @if (userId.HasValue)
+                            {
+                                <form asp-action="DeleteSubService" asp-controller="Services" method="post" class="remove-button-form" onsubmit="return confirm('Are you sure you want to remove this Sub Service?');">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="id" value="@subService.Id" />
+                                    <button type="submit" class="remove-button">&times;</button>
+                                </form>
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@subService.SerTypeName</h5>
+                                <p class="card-text">@subService.SerTypeDesc</p>
+                                <p class="card-meta text-muted">⏱ @subService.SerTime |🏷️ @subService.Price AED</p>
+                                <a href="#booking" class="btn btn-outline-light mt-2 choose-service" data-name="@subService.SerTypeName" data-cost="@subService.Price">Book Service</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+        </div>
+    </div>
+    @* <div id="cart-section" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; display: none;"> *@
+    @*     <h4><i class="fas fa-shopping-cart me-2"></i>Your Cart</h4> *@
+    @*     <div id="cart-items"></div> *@
+    @*     <hr> *@
+    @*     <p>Total: $<span id="total-cost">0</span></p> *@
+    @*     <a href="#checkout" class="btn btn-warning">Continue</a> *@
+    @*     <button id="clear-cart" class="btn btn-danger mt-2">Clear Cart</button> *@
+    @* </div> *@
+    <div id="cart-section" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; display: none;">
+        <button id="minimize-cart" class=" btn-light" style="color: #C5B358;">X</button>
+
+        <h4><i class="fas fa-shopping-cart me-2"></i>Your Cart</h4>
+        <hr>
+
+         <button id="minimize-cart" class="btn btn-sm btn-light mt-2">Minimize</button> 
+
+        <div id="cart-items"></div>
+        <hr>
+        <p style="color: whitesmoke;">Total: $<span id="total-cost">0</span></p>
+        <a href="#checkout" class="btn btn-warning">Continue</a>
+        <button id="clear-cart" class="btn btn-danger mt-2">Clear Cart</button>
+        <!-- Minimized cart icon -->
+
+    </div>
+</section>
+
+<script>
+            document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            // Add active class to the clicked button
+            button.classList.add('active');
+
+            // Filter gallery items based on the selected category
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+
+            // Button highlight
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const items = document.querySelectorAll('.gallery-item');
+            let delay = 0;
+
+            items.forEach(item => {
+                const match = filter === 'all' || item.getAttribute('data-category') === filter;
+
+                // Smooth staggered effect
+                setTimeout(() => {
+                    if (match) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                }, delay);
+                if (match) delay += 100;
+            });
+        });
+    });
+
+    // On initial page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, i) => {
+            setTimeout(() => item.classList.add('show'), i * 100);
+        });
+    });
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const chooseButtons = document.querySelectorAll('.choose-service');
+        const cartSection = document.getElementById('cart-section');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalCostElement = document.getElementById('total-cost');
+        const clearCartButton = document.getElementById('clear-cart');
+        const minimizeCartButton = document.getElementById('minimize-cart');
+        const showCart = document.getElementById('show-cart');
+        const showCartTotal = document.getElementById('show-cart-total');
+
+        let cartItems = [];
+        let totalCost = 0;
+
+        function openCart() {
+            cartSection.style.display = 'block';
+            showCart.style.display = 'none';
+        }
+    const openCartButton = document.getElementById('open-cart-button');
+
+    openCartButton.addEventListener('click', function (e) {
+        e.preventDefault(); // Prevent link from jumping
+        openCart(); // Call the function you already have
+    });
+        function closeCart() {
+            cartSection.style.display = 'none';
+            if (cartItems.length > 0) {
+                showCart.style.display = 'block';
+            }
+        }
+
+        function updateCart() {
+            cartItemsContainer.innerHTML = '';
+            cartItems.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('service-item');
+                itemElement.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>$${item.cost}</span>
+                    <button class="remove-item btn btn-sm btn-danger" data-index="${index}">&times;</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+
+            totalCost = cartItems.reduce((sum, item) => sum + item.cost, 0);
+            totalCostElement.innerText = totalCost.toFixed(2);
+            showCartTotal.innerText = `$${totalCost.toFixed(2)}`;
+
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function () {
+                    const index = parseInt(this.dataset.index);
+                    cartItems.splice(index, 1);
+                    updateCart();
+                    if (cartItems.length === 0) {
+                        closeCart();
+                        showCart.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        chooseButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const serviceName = this.dataset.name;
+                const serviceCost = parseFloat(this.dataset.cost);
+
+                cartItems.push({ name: serviceName, cost: serviceCost });
+                updateCart();
+                openCart();
+            });
+        });
+
+        clearCartButton.addEventListener('click', function () {
+            cartItems = [];
+            totalCost = 0;
+            updateCart();
+            closeCart();
+        });
+
+        minimizeCartButton.addEventListener('click', function () {
+            closeCart();
+        });
+
+        showCart.addEventListener('click', function () {
+            openCart();
+        });
+    });
+
+</script>

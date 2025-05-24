@@ -4,72 +4,67 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="about section pt-2 pt-md-5" id="Team-create">
+    <div class="container">
+        <h1>Create Team member</h1>
 
-<h1>Create Team member</h1>
+        <hr />
+        <div>
+            <div class="signup-border">
+                <h4></h4>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <!-- Add enctype for file upload -->
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="EmpName" class="control-label">Barber name</label>
+                        <input asp-for="EmpName" class="form-control" />
+                        <span asp-validation-for="EmpName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EmpSkills" class="control-label">Barber skills</label>
+                        <input asp-for="EmpSkills" class="form-control" />
+                        <span asp-validation-for="EmpSkills" class="text-danger"></span>
+                    </div>
 
-<hr />
-<div>
-    <div class="signup-border">
-        <h4></h4>
-        <form asp-action="Create" enctype="multipart/form-data">
-            <!-- Add enctype for file upload -->
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmpName" class="control-label"></label>
-                <input asp-for="EmpName" class="form-control" />
-                <span asp-validation-for="EmpName" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Nationality" class="control-label">Nationality</label>
+                        <input asp-for="Nationality" class="form-control" />
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Experiances" class="control-label">Experiances</label>
+                        <input asp-for="Experiances" class="form-control" />
+                        <span asp-validation-for="Experiances" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Languages" class="control-label">Languages</label>
+                        <input asp-for="Languages" class="form-control" />
+                        <span asp-validation-for="Languages" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CountryWork" class="control-label">Country work</label>
+                        <input asp-for="CountryWork" class="form-control" />
+                        <span asp-validation-for="CountryWork" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageLink" class="control-label">Profile Image</label>
+                        <input type="file" name="imageFile" id="imageFile" class="form-control" accept="image/*" />
+                        <!-- Hidden field to store the path -->
+                        <input type="hidden" asp-for="ImageLink" id="imageLink" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="EmpSkills" class="control-label"></label>
-                <input asp-for="EmpSkills" class="form-control" />
-                <span asp-validation-for="EmpSkills" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpPhoneNo" class="control-label"></label>
-                <input asp-for="EmpPhoneNo" class="form-control" />
-                <span asp-validation-for="EmpPhoneNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nationality" class="control-label"></label>
-                <input asp-for="Nationality" class="form-control" />
-                <span asp-validation-for="Nationality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Experiances" class="control-label"></label>
-                <input asp-for="Experiances" class="form-control" />
-                <span asp-validation-for="Experiances" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Languages" class="control-label"></label>
-                <input asp-for="Languages" class="form-control" />
-                <span asp-validation-for="Languages" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryWork" class="control-label"></label>
-                <input asp-for="CountryWork" class="form-control" />
-                <span asp-validation-for="CountryWork" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageLink" class="control-label">Profile Image</label>
-                <input type="file" name="imageFile" id="imageFile" class="form-control" accept="image/*" />
-                <!-- Hidden field to store the path -->
-                <input type="hidden" asp-for="ImageLink" id="imageLink" />
-            </div>
-            <div class="form-group">
-                <label asp-for="Birth" class="control-label"></label>
-                <input asp-for="Birth" class="form-control" type="date" />
-                <span asp-validation-for="Birth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

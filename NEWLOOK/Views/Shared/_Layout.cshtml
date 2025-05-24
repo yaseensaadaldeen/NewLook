@@ -1,132 +1,150 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
-    <title>NEWLOOK BUSINESS</title>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>NEWLOOK BUSINESS</title>
 
+    <!-- CSS Libraries -->
     <link rel="stylesheet" href="~/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="~/css/aos.css">
-
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="~/css/tooplate-gymso-style.css">
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <link rel="stylesheet" href="~/css/newlook-style.css">
 </head>
-<body data-spy="scroll" data-target="#navbarNav" data-offset="50">
 
-    <!-- MENU BAR -->
+<body data-spy="scroll" data-target="#navbarNav" data-offset="50" class="d-flex flex-column min-vh-100">
+
+    <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-
-            <a class="navbar-brand" href="Home"><img src="~/images/4.png" alt="" /></a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <a class="navbar-brand" href="Home"><img src="~/images/4.png" alt="Logo" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link smoothScroll">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">About Us</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="Teams" class="nav-link smoothScroll">Our Team</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#schedule" class="nav-link smoothScroll">Our Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#schedule" class="nav-link smoothScroll">Gallery</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#contact" class="nav-link smoothScroll">Contact Us</a>
-                    </li>
+                    <li class="nav-item"><a href="Home" class="nav-link smoothScroll">Home</a></li>
+                    <li class="nav-item"><a href="AboutUs" class="nav-link smoothScroll">About Us</a></li>
+                    <li class="nav-item"><a href="Teams" class="nav-link smoothScroll">Our Team</a></li>
+                    <li class="nav-item"><a href="services" class="nav-link smoothScroll">Our Services</a></li>
+                    <li class="nav-item"><a href="gallery" class="nav-link smoothScroll">Gallery</a></li>
+                    <li class="nav-item"><a href="contactus" class="nav-link smoothScroll">Contact Us</a></li>
                 </ul>
 
                 <ul class="social-icon ml-lg-3">
-                    <!-- <li><a href="https://fb.com/tooplate" class="fa fa-facebook"></a></li> -->
                     <li><a href="#" class="fa-brands fa-tiktok"></a></li>
                     <li><a href="#" class="fa-brands fa-instagram"></a></li>
+                    <li><a href="#" id="open-cart-button" class="fa fa-shopping-cart"></a></li>
+
                 </ul>
             </div>
-
         </div>
     </nav>
-    <div class="container mt-5 pt-5">
-        @if (TempData["SuccessMessage"] != null)
-        {
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                @TempData["SuccessMessage"]
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        }
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                @TempData["ErrorMessage"]
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        }
+
+    <!-- MAIN CONTENT -->
+    <!-- Top Alert Container -->
+    <div id="top-alert-container" class="position-fixed w-100" style="top: 0; z-index: 1050;">
+        <div class="container pt-3">
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMessage"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMessage"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        </div>
     </div>
-        @RenderBody()
-        <hr />
-        <footer class="site-footer">
-            <div class="container">
-                <div class="row ">
 
-                    <div class="col-lg-4 col-md-5">
-                        <p class="copyright-text">
-                            Copyright &copy; 2025 NewLook Business Co.
+    <!-- Main Body -->
+    <main class="flex-grow-1" style="padding-top: 100px;">
+        <!-- Adjust this if your navbar height is different -->
+            @RenderBody()
+    </main>
 
-                            <!-- <br>Design: <a href="https://www.tooplate.com">Tooplate</a></p> -->
+    <!-- Auto Dismiss Script -->
+    @section Scripts {
+        <script>
+            setTimeout(function () {
+                const alerts = document.querySelectorAll('.alert');
+                alerts.forEach(alert => {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                });
+            }, 4000); // Auto-dismiss after 4 seconds
+        </script>
+    }
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-left">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <p class="mb-0">&copy; 2025 NewLook Business Co. All Rights Reserved.</p>
+                </div>
+
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <p class="mb-1"><i class="fa fa-envelope mr-2"></i> <a href="mailto:info@newlook-business.com">info@newlook-business.com</a></p>
+                    <p class="mb-0"><i class="fa fa-phone mr-2"></i> <a href="https://wa.me/971586807722" target="_blank">+971 586 807 722</a></p>
+                    <p class="mb-0"><i class="fa fas fa-location-arrow mr-2"></i> <a href="https://maps.app.goo.gl/zeMd7qRSQRQzd32TA" target="_blank">Umm Al sheif -SKB Plaza properties Office No: 104 - Dubai - United Arab Emirates</a></p>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="social-links d-flex justify-content-center justify-content-md-end">
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
-
-                    <div class="d-flex justify-content-center mx-auto col-lg-5 col-md-7 col-12">
-                        <p class="mr-4">
-                            <i class="fa fa-envelope-o mr-1"></i>
-                            <!-- <a href="#">info@newlook-business.com</a> -->
-                            <a href="mailto:info@newlook-business.com">info@newlook-business.com</a>
-
-                        </p>
-
-                        <!-- <p><i class="fa fa-phone mr-1"></i> +971 586 807 722</p> -->
-                        <p><i class="fa fa-phone mr-1"></i> <a href="https://wa.me/971586807722" target="_blank">+971 586 807 722</a></p>
-
-                    </div>
-
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
 
+    <!-- OPTIONAL PAGE-SPECIFIC SCRIPTS -->
     @RenderSection("scripts", required: false)
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/aos.js"></script>
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Local Custom Scripts -->
     <script src="~/js/smoothscroll.js"></script>
     <script src="~/js/custom.js"></script>
+
+    <!-- AOS INIT (after DOM is ready) -->
     <script>
-        window.addEventListener('load', function() {
-            document.querySelector('.navbar-brand img').classList.add('loaded');
+        window.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true
+            });
+        });
+    </script>
+
+    <!-- Image Fade-in Effect (optional) -->
+    <script>
+        window.addEventListener('load', function () {
+            const logo = document.querySelector('.navbar-brand img');
+            if (logo) {
+                logo.classList.add('loaded');
+            }
         });
     </script>
 </body>

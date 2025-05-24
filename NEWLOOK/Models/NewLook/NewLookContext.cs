@@ -21,6 +21,8 @@ public partial class NewLookContext : DbContext
 
     public virtual DbSet<Customer> Customers { get; set; }
 
+    public virtual DbSet<Gallery> Galleries { get; set; }
+
     public virtual DbSet<MstService> MstServices { get; set; }
 
     public virtual DbSet<MstServiceImage> MstServiceImages { get; set; }
@@ -114,6 +116,18 @@ public partial class NewLookContext : DbContext
                 .HasColumnName("custm_phone");
         });
 
+        modelBuilder.Entity<Gallery>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__gallery__3214EC271445B7FA");
+
+            entity.ToTable("gallery");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.ImageLink)
+                .HasMaxLength(100)
+                .HasColumnName("image_link");
+        });
+
         modelBuilder.Entity<MstService>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__mst_Serv__3214EC276F112E71");
@@ -127,12 +141,10 @@ public partial class NewLookContext : DbContext
             entity.Property(e => e.SerName)
                 .HasMaxLength(50)
                 .HasColumnName("ser_name");
-            entity.Property(e => e.TeamId).HasColumnName("team_id");
-
-            entity.HasOne(d => d.Team).WithMany(p => p.MstServices)
-                .HasForeignKey(d => d.TeamId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__mst_Servi__team___3F466844");
+            entity.Property(e => e.ServiceIconImage)
+                .HasMaxLength(500)
+                .HasDefaultValue("")
+                .HasColumnName("service_icon_image");
         });
 
         modelBuilder.Entity<MstServiceImage>(entity =>
@@ -222,16 +234,12 @@ public partial class NewLookContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValue("Y")
                 .HasColumnName("active");
-            entity.Property(e => e.Birth).HasColumnName("birth");
             entity.Property(e => e.CountryWork)
                 .HasMaxLength(50)
                 .HasColumnName("country_work");
             entity.Property(e => e.EmpName)
                 .HasMaxLength(50)
                 .HasColumnName("emp_name");
-            entity.Property(e => e.EmpPhoneNo)
-                .HasMaxLength(50)
-                .HasColumnName("emp_phone_no");
             entity.Property(e => e.EmpSkills)
                 .HasMaxLength(50)
                 .HasColumnName("emp_skills");
