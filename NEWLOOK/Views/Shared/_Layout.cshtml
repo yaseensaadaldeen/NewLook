@@ -28,13 +28,26 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-lg-auto">
-                    <li class="nav-item"><a href="Home" class="nav-link smoothScroll">Home</a></li>
-                    <li class="nav-item"><a href="AboutUs" class="nav-link smoothScroll">About Us</a></li>
-                    <li class="nav-item"><a href="Teams" class="nav-link smoothScroll">Our Team</a></li>
-                    <li class="nav-item"><a href="services" class="nav-link smoothScroll">Our Services</a></li>
-                    <li class="nav-item"><a href="gallery" class="nav-link smoothScroll">Gallery</a></li>
-                    <li class="nav-item"><a href="contactus" class="nav-link smoothScroll">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link smoothScroll">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="AboutUs" asp-action="Index" class="nav-link smoothScroll">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Teams" asp-action="Index" class="nav-link smoothScroll">Our Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Services" asp-action="Index" class="nav-link smoothScroll">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Gallery" asp-action="Index" class="nav-link smoothScroll">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="ContactUs" asp-action="Index" class="nav-link smoothScroll">Contact Us</a>
+                    </li>
                 </ul>
+
 
                 <ul class="social-icon ml-lg-3">
                     <li><a href="#" class="fa-brands fa-tiktok"></a></li>
@@ -74,23 +87,10 @@
     <!-- Main Body -->
     <main class="flex-grow-1" style="padding-top: 100px;">
         <!-- Adjust this if your navbar height is different -->
-            @RenderBody()
+        @RenderBody()
     </main>
 
     <!-- Auto Dismiss Script -->
-    @section Scripts {
-        <script>
-            setTimeout(function () {
-                const alerts = document.querySelectorAll('.alert');
-                alerts.forEach(alert => {
-                    const bsAlert = new bootstrap.Alert(alert);
-                    bsAlert.close();
-                });
-            }, 4000); // Auto-dismiss after 4 seconds
-        </script>
-    }
-
-
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">

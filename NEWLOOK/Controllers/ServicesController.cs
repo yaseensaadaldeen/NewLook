@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using NEWLOOK.Models.NewLook;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace NEWLOOK.Controllers
 {
@@ -25,16 +27,16 @@ namespace NEWLOOK.Controllers
         }
 
         // Master Service CRUD operations
-       
+
         public IActionResult CreateMasterService()
         {
             ViewBag.Teams = _context.Teams.ToList();
             return View();
         }
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+
         public async Task<IActionResult> CreateMasterService(MstService service)
         {
             ModelState.Remove("Team");
@@ -57,7 +59,7 @@ namespace NEWLOOK.Controllers
 
                 service.ServiceIconImage = "/images/services/" + uniqueFileName;
 
-            
+
                 service.SerDesc="";
                 _context.Add(service);
                 await _context.SaveChangesAsync();
@@ -68,7 +70,7 @@ namespace NEWLOOK.Controllers
             return View(service);
         }
 
-       
+
         public async Task<IActionResult> EditMasterService(int? id)
         {
             if (id == null)
@@ -88,7 +90,7 @@ namespace NEWLOOK.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+
         public async Task<IActionResult> EditMasterService(int id, [Bind("Id,SerName,SerDesc,ServiceIconImage,TeamId")] MstService service)
         {
             if (id != service.Id)
@@ -120,7 +122,7 @@ namespace NEWLOOK.Controllers
             return View(service);
         }
 
-       
+
         public async Task<IActionResult> DeleteMasterService(int? id)
         {
             if (id == null)
@@ -165,17 +167,17 @@ namespace NEWLOOK.Controllers
 
                 await _context.SaveChangesAsync();
 
-                TempData["DeleteSuccess"] = "Master service and all its sub-services were deleted successfully.";
+                TempData["SuccessMessage"] = "Master service and all its sub-services were deleted successfully.";
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateException ex)
             {
-                TempData["DeleteError"] = "Unable to delete service. It may be referenced by other records. Error: " + ex.Message;
+                TempData["ErrorMessage"] = "Unable to delete service. It may be referenced by other records. Error: " + ex.Message;
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                TempData["DeleteError"] = "An unexpected error occurred: " + ex.Message;
+                TempData["ErrorMessage"] = "An unexpected error occurred: " + ex.Message;
                 return RedirectToAction(nameof(Index));
             }
         }
@@ -190,7 +192,7 @@ namespace NEWLOOK.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+
         public async Task<IActionResult> CreateSubService([Bind("SerTypeName,SerTypeDesc,SerTime,Price,MstSerId")] ServiceType serviceType)
         {
             ModelState.Remove("MstSer");
@@ -205,7 +207,7 @@ namespace NEWLOOK.Controllers
             return View(serviceType);
         }
 
-       
+
         public async Task<IActionResult> EditSubService(int? id)
         {
             if (id == null)
@@ -228,7 +230,7 @@ namespace NEWLOOK.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
+
         public async Task<IActionResult> EditSubService(int id, [Bind("Id,SerTypeName,SerTypeDesc,SerTime,Price,MstSerId")] ServiceType serviceType)
         {
             if (id != serviceType.Id)
@@ -269,19 +271,19 @@ namespace NEWLOOK.Controllers
                 var serviceType = await _context.ServiceTypes.FindAsync(id);
                 if (serviceType == null)
                 {
-                    TempData["DeleteError"] = "Sub-service not found.";
+                    TempData["ErrorMessage"] = "Sub-service not found.";
                     return RedirectToAction(nameof(Index));
                 }
 
                 _context.ServiceTypes.Remove(serviceType);
                 await _context.SaveChangesAsync();
 
-                TempData["DeleteSuccess"] = "Sub-service deleted successfully.";
+                TempData["SuccessMessage"] = "Sub-service deleted successfully.";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                TempData["DeleteError"] = "An error occurred: " + ex.Message;
+                TempData["ErrorMessage"] = "An error occurred: " + ex.Message;
                 return RedirectToAction(nameof(Index));
             }
         }
@@ -296,5 +298,46 @@ namespace NEWLOOK.Controllers
         {
             return _context.ServiceTypes.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        public IActionResult StoreCartItems(string cartJson)
+        {
+            if (!string.IsNullOrEmpty(cartJson))
+            {
+                try
+                {
+                    // Step 1: Deserialize JSON to List<ServiceType>
+                    var services = JsonConvert.DeserializeObject<List<ServiceType>>(cartJson);
+
+                    if (services != null && services.Any())
+                    {
+                        // Optional: Process/validate services here if needed
+
+                        // Step 2: Store it back in session as a JSON string
+                        string serializedServices = JsonConvert.SerializeObject(services);
+                        HttpContext.Session.SetString("CartItems", serializedServices);
+
+                        // Redirect to Booking/Create since services are present
+                        return RedirectToAction("Create", "Booking");
+                    }
+                    else
+                    {
+                        // Services is empty, add model error and return to the view with message
+                        TempData["ErrorMessage"] =  "No services provided. Please add at least one service.";
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorMessage"] = "Invalid service data provided.";
+                    return View("Create");
+                }
+            }
+
+            TempData["ErrorMessage"] =  "No services provided. Please add at least one service.";
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

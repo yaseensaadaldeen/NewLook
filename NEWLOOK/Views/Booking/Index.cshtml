@@ -1,0 +1,82 @@
+﻿@model BookingViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="about section pt-2 pt-md-5" id="gallery">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+                    <ol class="breadcrumb bg-transparent px-0 mb-0">
+                        <li class="breadcrumb-item">
+                            <a href="index.html" style="color: var(--primary-color);">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active text-light d-flex align-items-center" aria-current="page">
+                            Information
+                            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                                <g>
+                                    <line x1="10" y1="10" x2="30" y2="30" />
+                                    <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                                </g>
+                                <circle cx="10" cy="10" r="3" fill="currentColor" />
+                                <circle cx="10" cy="30" r="3" fill="currentColor" />
+                            </svg>
+                        </li>
+                    </ol>
+                </nav>
+
+                <h1 class="section-title" style="color: whitesmoke;">Information</h1>
+                <p class="section-title1 animated-tagline" style="color: rgba(245, 245, 245, 0.867);">"Put Your Information."</p>
+                <br>
+
+                <form asp-action="Create" method="post">
+                    <div class="mb-3">
+                        <label asp-for="CustmName" class="form-label">Full Name</label>
+                        <input asp-for="CustmName" class="form-control" placeholder="Your Full Name" required />
+                        <span asp-validation-for="CustmName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CustmEmail" class="form-label">Email</label>
+                        <input asp-for="CustmEmail" class="form-control" placeholder="Your Email" required />
+                        <span asp-validation-for="CustmEmail" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CustmPhone" class="form-label">Phone Number</label>
+                        <input asp-for="CustmPhone" class="form-control" placeholder="Your Phone Number" required />
+                        <span asp-validation-for="CustmPhone" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="CustmAddress" class="form-label">Address</label>
+                        <input asp-for="CustmAddress" class="form-control" placeholder="Address" />
+                        <span asp-validation-for="CustmAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="BirthDt" class="form-label">Birth Date</label>
+                        <input asp-for="BirthDt" class="form-control" type="date" required max="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                        <span asp-validation-for="BirthDt" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="BookDate" class="form-label">Booking Date</label>
+                        <input asp-for="BookDate" class="form-control" type="datetime-local" required />
+                        <span asp-validation-for="BookDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-gold">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

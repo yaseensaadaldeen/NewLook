@@ -2415,3 +2415,21 @@ body, html {
     background-color: white !important;
     color: black !important;
 }
+.form-label {
+    color: var(--primary-color);
+}
+.fade-up {
+    animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}

@@ -48,14 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-// LIGHTBOX INITIALIZATION
-const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-    zoomable: true
-});
-
 // GALLERY FILTER FUNCTIONALITY
 function initializeGalleryFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -234,10 +226,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-const lightbox = GLightbox({
-    selector: '.glightbox',
-    touchNavigation: true,
-    loop: true,
-    zoomable: true,
-    closeButton: true
+
+$(document).ready(function () {
+    $('.alert').each(function () {
+        const $alert = $(this);
+        let dismissTimer;
+
+        const startDismissTimer = () => {
+            dismissTimer = setTimeout(() => {
+                $alert.addClass('fade-up');
+                setTimeout(() => {
+                    $alert.alert('close');
+                }, 500); // Wait for fade-up animation to finish
+            }, 2000); // Start fade-up after 2 second
+        };
+
+        const clearDismissTimer = () => {
+            clearTimeout(dismissTimer);
+            $alert.removeClass('fade-up');
+        };
+
+        // Start timer initially
+        startDismissTimer();
+
+        // On hover: reset timer and remove fade-up
+        $alert.hover(clearDismissTimer, startDismissTimer);
+    });
 });
