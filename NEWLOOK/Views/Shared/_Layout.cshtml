@@ -46,18 +46,44 @@
                     <li class="nav-item">
                         <a asp-controller="ContactUs" asp-action="Index" class="nav-link smoothScroll">Contact Us</a>
                     </li>
+
+                    @if (!(ViewData["HideCart"] as bool? ?? false))
+                    {
+                        <li class="nav-item">
+                            <a href="#" id="open-cart-button" class="nav-link"><i class="fa fa-shopping-cart"></i></a>
+                        </li>
+                    }
+
+                  
                 </ul>
 
-
-                <ul class="social-icon ml-lg-3">
-                    <li><a href="#" class="fa-brands fa-tiktok"></a></li>
-                    <li><a href="#" class="fa-brands fa-instagram"></a></li>
-                    <li><a href="#" id="open-cart-button" class="fa fa-shopping-cart"></a></li>
-
+                <ul class="social-icon ml-lg-3  d-lg-flex">
+                    <li>
+                        <a href="https://www.instagram.com/newlookbusiness1/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.tiktok.com/@@newlook.business" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </li>
+                    @inject IHttpContextAccessor HttpContextAccessor
+                    @{
+                        var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
+                    }
+                    @if (userId.HasValue)
+                    {
+                        <li class="nav-item">
+                            <form method="post" asp-controller="Home" asp-action="Logout" class="form-inline">
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                <button type="submit" class="btn btn-danger nav-link text-white" style="border-radius: 30px; padding: 6px 15px;">
+                                    <i class="fas fa-sign-out-alt"></i> 
+                                </button>
+                            </form>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <!-- MAIN CONTENT -->
     <!-- Top Alert Container -->
@@ -107,8 +133,8 @@
 
                 <div class="col-md-4">
                     <div class="social-links d-flex justify-content-center justify-content-md-end">
-                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/newlookbusiness1/" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@@newlook.business" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
@@ -147,5 +173,7 @@
             }
         });
     </script>
+   
+
 </body>
 </html>

@@ -1,27 +1,33 @@
 ﻿@model NEWLOOK.Models.NewLook.LoginViewModel
+@{
+    ViewData["HideCart"] = true;
+}
+<section id="contact" class="contact-section pt-2 pt-md-5">
+    <div class="container ">
+        <div class="signup-border text-white">
+            <h2>Login</h2>
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div class="signup-border text-white">
-    <h2>Login</h2>
-    <form asp-action="Login" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="text-white"> User Name</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
 
-        <div class="form-group">
-            <label asp-for="UserName" class="text-white"></label>
-            <input asp-for="UserName" class="form-control" />
-            <span asp-validation-for="UserName" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Pswd" class="text-white">Password</label>
+                    <input asp-for="Pswd" type="password" class="form-control" />
+                    <span asp-validation-for="Pswd" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="golden-btn">Login</button>
+
+                @if (Context.Session.GetString("UserLevel") == "ad")
+                {
+                    <button type="submit" class="golden-btn"> <a asp-controller="Account" asp-action="Register">Register</a></button>
+                }
+            </form>
         </div>
-
-        <div class="form-group">
-            <label asp-for="Pswd" class="text-white"></label>
-            <input asp-for="Pswd" type="password" class="form-control" />
-            <span asp-validation-for="Pswd" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="golden-btn">Login</button>
-
-        @if (Context.Session.GetString("UserLevel") == "ad")
-        {
-            <button type="submit" class="golden-btn"> <a asp-controller="Account" asp-action="Register">Register</a></button>
-        }
-    </form>
-</div>
+    </div>
+</section>

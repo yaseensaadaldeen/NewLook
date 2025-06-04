@@ -37,18 +37,18 @@
                 <br>
                 <form asp-action="Create" method="post">
                     <div class="mb-3">
-                        <label asp-for="CustmName" class="form-label">Full Name</label>
+                        <label asp-for="CustmName" class="form-label" name="cf-name">Full Name</label>
                         <input asp-for="CustmName" class="form-control" />
                         <span asp-validation-for="CustmName" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="CustmEmail" class="form-label">Email</label>
+                        <label asp-for="CustmEmail" class="form-label" name="cf-email">Email</label>
                         <input asp-for="CustmEmail" class="form-control" />
                         <span asp-validation-for="CustmEmail" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="CustmPhone" class="form-label">Phone number</label>
-                        <input asp-for="CustmPhone" class="form-control" />
+                        <label asp-for="CustmPhone" class="form-label" name="cf-phone">Phone number</label>
+                        <input asp-for="CustmPhone" id="phone-input" maxlength="15" class="form-control" />
                         <span asp-validation-for="CustmPhone" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
@@ -58,12 +58,12 @@
                     </div>
                     <div class="mb-3">
                         <label asp-for="BirthDt" class="form-label">Birth date</label>
-                        <input asp-for="BirthDt" class="form-control" type="date" />
+                        <input asp-for="BirthDt" class="form-control" type="date" onkeydown="return false;" onclick="this.showPicker && this.showPicker();" required />
                         <span asp-validation-for="BirthDt" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="BookDate" class="form-label">Booking Date</label>
-                        <input asp-for="BookDate" class="form-control" type="datetime-local" />
+                        <label asp-for="BookDate" class="form-label" id="cf-time">Booking Date</label>
+                        <input asp-for="BookDate" name="BookDate" class="form-control" type="datetime-local" onkeydown="return false;" onclick="this.showPicker && this.showPicker();" required />
                         <span asp-validation-for="BookDate" class="text-danger"></span>
                     </div>
                     <div class="text-center">
@@ -80,12 +80,64 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
 
+
     <!-- Optional: validate on input -->
+
     <script>
-        $(function () {
-            $("form input, form select, form textarea").on("input change", function () {
-                $(this).valid();
+        document.getElementById('phone-input').addEventListener('input', function(e) {
+            let value = this.value;
+
+            // If the first character is '+', allow digits after it
+            if (value.startsWith('+')) {
+                // Allow only numbers after the '+'
+                this.value = '+' + value.slice(1).replace(/[^0-9]/g, '');
+            } else {
+                // If no '+' sign is present, only allow numbers
+                this.value = value.replace(/[^0-9]/g, '');
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // stop default submission
+
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                const name = document.querySelector("[name='CustmName']").value;
+                const email = document.querySelector("[name='CustmEmail']").value;
+                const phone = document.querySelector("[name='CustmPhone']").value;
+                const time = document.querySelector("[name='BookDate']").value;
+
+                const stored = localStorage.getItem("selectedServices");
+                let serviceText = "None selected";
+                if (stored) {
+                    const services = JSON.parse(stored);
+                    if (services.length > 0) {
+                        serviceText = services.map(s => `• ${s.name} - $${s.price}`).join("%0A");
+                    }
+                }
+
+                const message = `*New Booking Request*
+                                *Name:* ${name}
+                                *Email:* ${email}
+                                *Phone:* ${phone}
+                                *Time:* ${time}
+                                Selected Services:
+                                ${serviceText}
+                                            `;
+
+                localStorage.removeItem("selectedServices");
+
+                // Wait a moment, then submit form
+                setTimeout(() => form.submit(), 1000);
             });
         });
     </script>
+
 }

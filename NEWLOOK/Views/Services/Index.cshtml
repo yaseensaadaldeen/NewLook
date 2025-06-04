@@ -6,6 +6,7 @@
 
 
 }
+
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
@@ -124,22 +125,74 @@
     @*     <button id="clear-cart" class="btn btn-danger mt-2">Clear Cart</button> *@
     @* </div> *@
 
-    <div id="cart-section" style="position: fixed; top: 0; right: 0; width: 300px; height: 100%; background-color: rgba(0, 0, 0, 0.8); color: #fff; padding: 20px; display: none;">
+
+   
+    <div id="cart-section" style="
+         position: fixed;
+         top: 0;
+         right: 0;
+         width: 320px;
+         height: 100%;
+         background: linear-gradient(to bottom, #1c1c1c, #000);
+         color: #f5f5f5;
+         padding: 24px;
+         display: none;
+         box-shadow: -4px 0 12px rgba(255, 215, 0, 0.2);
+         font-family: 'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif;
+         z-index: 9999;">
         <form id="checkout-form" method="post" action="/Services/StoreCartItems">
-            <button id="minimize-cart" type="button" class=" btn-light" style="color: #C5B358;">X</button>
+            <button id="minimize-cart" type="button"  style="
+        background: none;
+        border: none;
+        color: #d4af37;
+        font-size: 20px;
+        float: right;
+        cursor: pointer;
+    ">
+                X
+            </button>
 
-            <h4><i class="fas fa-shopping-cart me-2"></i>Your Cart</h4>
-            <hr>
+            <h3 style="color: #d4af37; margin-top: 10px;">
+                <!-- <i class="fas fa-scissors me-2"></i> -->
+                <svg class="scissors-icon ms-2" viewBox="0 0 41 41" width="80" height="80" fill="none" stroke="currentColor" stroke-width="3">
+                    <g>
+                        <!-- Fixed blade -->
+                        <line x1="10" y1="10" x2="30" y2="30" />
+                        <!-- Rotating blade -->
+                        <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                    </g>
+                    <circle cx="10" cy="10" r="3" fill="currentColor" />
+                    <circle cx="10" cy="30" r="3" fill="currentColor" />
+                </svg>
+                Your Cart
+            </h3>            <hr>
+            <hr style="border-color: #d4af37;">
 
-            <button id="minimize-cart" class="btn btn-sm btn-light mt-2">Minimize</button>
-
-            <div id="cart-items"></div>
-            <hr>
-            <p style="color: whitesmoke;">Total: $<span id="total-cost">0</span></p>
+            @* <button id="minimize-cart" class="btn btn-sm btn-light mt-2">Minimize</button> *@
+            <div id="cart-items" style="max-height: 60%; overflow-y: auto; margin-bottom: 15px;"></div>
+            <hr style="border-color: #444;">
+            <p style="font-size: 16px;">Total: <span style="color: #d4af37;">$<span id="total-cost">0</span></span></p>
 
             <input type="hidden" name="cartJson" id="cartJson" />
-            <button type="submit" class="btn btn-warning">Continue</button>
-            <button id="clear-cart" type="button" class="btn btn-danger mt-2">Clear Cart</button>
+            <button type="submit" class="btn btn-warning" style="
+        background-color: #d4af37;
+        color: #000;
+        border: none;
+        width: 100%;
+        margin-top: 10px;
+    ">
+                Continue
+            </button>
+            <button id="clear-cart" type="button" class="btn btn-danger mt-2" style="
+        background-color: transparent;
+        border: 1px solid #d9534f;
+        color: #d9534f;
+        width: 100%;
+        margin-top: 10px;
+    ">
+                Clear Cart
+            </button>
+            
             <!-- Minimized cart icon -->
         </form>
     </div>
@@ -247,11 +300,31 @@
             cartItems.forEach((item, index) => {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('service-item');
-                itemElement.innerHTML = `
-                    <span>${item.SerTypeName}</span>
-                    <span>$${item.Price}</span>
-                    <button class="remove-item btn btn-sm btn-danger" data-index="${index}">&times;</button>
-                `;
+              
+                     itemElement.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <span>${item.SerTypeName}</span>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="color: #d4af37;">$${item.Price}</span>
+                <button class="remove-item" data-index="${index}" style="
+                    background: transparent;
+                    border: 1px solid #d4af37;
+                    color: #d4af37;
+                    font-weight: bold;
+                    border-radius: 50%;
+                    width: 24px;
+                    height: 24px;
+                    line-height: 0;
+                    font-size: 16px;
+                    cursor: pointer;
+                    padding: 0;
+                    margin-left:50px;
+                "><i class="fas fa-trash-alt"></i>
+    </button>
+            </div>
+        </div>
+    `;
                 cartItemsContainer.appendChild(itemElement);
             });
 

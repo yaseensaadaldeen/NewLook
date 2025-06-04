@@ -2,14 +2,17 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <section class="about section pt-2 pt-md-5" id="aboutus">
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col">
-                    <!-- Breadcrumb -->
-                    <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
-                        <ol class="breadcrumb bg-transparent px-0 mb-0">
-                            <li class="breadcrumb-item">
+@{
+    ViewData["HideCart"] = true;
+}
+<section class="about section pt-2 pt-md-5" id="aboutus">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+                    <ol class="breadcrumb bg-transparent px-0 mb-0">
+                        <li class="breadcrumb-item">
                             <a href="@Url.Action("Index", "Home")" style="color: var(--primary-color);">Home</a>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" style="    fill: var(--primary-color);">
                                 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
@@ -26,181 +29,190 @@
                                 <circle cx="10" cy="10" r="3" fill="currentColor" />
                                 <circle cx="10" cy="30" r="3" fill="currentColor" />
                             </svg>
-                            </li>
-                           
-                        </ol>
-                    </nav>
+                        </li>
 
-                    <!-- Section Title -->
-                    <h1 class="section-title text-start" style="color: whitesmoke;" data-aos="fade-right">About Us</h1>
+                    </ol>
+                </nav>
 
-                    <!-- Second Block: Image Left, Text Right -->
-                    <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <div class="col-md-6 text-center">
+                <!-- Section Title -->
+                <h1 class="section-title text-start" style="color: whitesmoke;" data-aos="fade-right">About Us</h1>
+
+                <!-- Second Block: Image Left, Text Right -->
+                <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-md-12 ">
+                        <div class="col-md-6"> <h3 class="text-light mb-3">NewLook</h3></div>
+                    </div>
+                    <div class="col-md-6 text-center">
+
                         <img src="~/images/about/chairs.jpg" alt="Gaming Chair" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="text-light mb-3">NewLook</h3>
-                            <p class="text-light" style="color: #ccc;">
-                                Founded in the heart of Dubai, NewLook Barbershop is not just a grooming destination—it's a movement. We’re on a relentless pursuit to redefine the art of barbering. At NewLook Barbershop, it's all about mastering the craft, blending precision with passion, and delivering an unparalleled grooming experience that goes beyond expectations. From meticulous haircuts to expert grooming, every service is tailored to elevate your confidence and redefine your look. We're not just shaping hair—we're shaping the future of grooming.
-
-                            </p>
-                        </div>
                     </div>
-                    <!-- third -->
-                    <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <div class="col-md-6 text-center">
-                            <img src="images/about/1.JPG" alt="Gaming Chair" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="text-light mb-3">Team</h3>
-                            <p class="text-light" style="color: #ccc;">
-                                Our team is a collective of elite, award-winning barbers and hair stylists, each a master in their craft, with years of experience in sculpting and shaping perfection. Every member is handpicked for their exceptional skill and unwavering dedication to the art of grooming. At CG Barbershop, we don’t just cut hair—we create masterpieces. Armed with the finest tools and the latest techniques, we are fully equipped to deliver unparalleled results, ensuring every grooming experience is a work of art, tailored to your unique style. Step into luxury—where your grooming needs are met with precision, passion, and a touch of gold.
-                            </p>
-                        </div>
+                    <div class="col-md-6">
+                        <p class="text-light" style="color: #ccc;">
+                            Founded in the heart of Dubai, NewLook Barbershop is not just a grooming destination—it's a movement. We’re on a relentless pursuit to redefine the art of barbering. At NewLook Barbershop, it's all about mastering the craft, blending precision with passion, and delivering an unparalleled grooming experience that goes beyond expectations. From meticulous haircuts to expert grooming, every service is tailored to elevate your confidence and redefine your look. We're not just shaping hair—we're shaping the future of grooming.
+
+                        </p>
                     </div>
-                    <!-- First Block: Text Left, Image Right -->
-                    <div class="row align-items-center mb-5" data-aos="fade-up">
-                        <div class="col-md-6 text-center">
-                            <img src="images/about/Shop 2.jpg" alt="Barber Razor" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
-                        </div>
-                        <div class="col-md-6">
-
-                            <h3 class="text-light mb-3">Tailored Grooming Experience</h3>
-                            <p class="text-light" style="color: #ccc;">
-                                Welcome to <strong style="color: #fff;">New Look Business</strong>, where premium grooming meets modern comfort.
-                                We don’t just offer haircuts—we provide a grooming experience tailored to your lifestyle.
-                            </p>
-                        </div>
-
+                </div>
+                <!-- third -->
+                <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-md-12 ">
+                        <div class="col-md-6"> <h3 class="text-light mb-3">About Team</h3></div>
                     </div>
+                    <div class="col-md-6 text-center">
+                        <img src="images/about/1.JPG" alt="Gaming Chair" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-light" style="color: #ccc;">
+                            Our team is a collective of elite, award-winning barbers and hair stylists, each a master in their craft, with years of experience in sculpting and shaping perfection. Every member is handpicked for their exceptional skill and unwavering dedication to the art of grooming. At NewLook Barbershop, we don’t just cut hair—we create masterpieces. Armed with the finest tools and the latest techniques, we are fully equipped to deliver unparalleled results, ensuring every grooming experience is a work of art, tailored to your unique style. Step into luxury—where your grooming needs are met with precision, passion, and a touch of gold.
+                        </p>
+                    </div>
+                </div>
+                <!-- First Block: Text Left, Image Right -->
+                <div class="row align-items-center mb-5" data-aos="fade-up">
+                    <div class="col-md-12 ">
+                        <div class="col-md-6"> <h3 class="text-light mb-3">Tailored Grooming Experience</h3></div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="images/about/Shop 2.jpg" alt="Barber Razor" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6">
 
-                    <!-- Second Block: Image Left, Text Right -->
-                    <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                        <div class="col-md-6 text-center">
-                            <img src="images/about/photo-1719387473738-a568ffea9db8.jpg" alt="Gaming Chair" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="text-light mb-3">Entertainment & Relaxation</h3>
-                            <p class="text-light" style="color: #ccc;">
-                                Enjoy top-tier services while staying connected or entertained. Each grooming chair comes equipped with a PlayStation, workspace tools, or streaming access to keep you relaxed and engaged.
-                            </p>
-                        </div>
+                        <p class="text-light" style="color: #ccc;">
+                            Welcome to <strong style="color: #fff;">New Look Business</strong>, where premium grooming meets modern comfort.
+                            We don’t just offer haircuts—we provide a grooming experience tailored to your lifestyle.
+                        </p>
                     </div>
 
+                </div>
+
+                <!-- Second Block: Image Left, Text Right -->
+                <div class="row align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-md-12 ">
+                        <div class="col-md-6"> <h3 class="text-light mb-3">Entertainment & Relaxation</h3></div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="images/about/photo-1719387473738-a568ffea9db8.jpg" alt="Gaming Chair" class="img-fluid rounded-4 shadow" style="max-height: 350px; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-light" style="color: #ccc;">
+                            Enjoy top-tier services while staying connected or entertained. Each grooming chair comes equipped with a PlayStation, workspace tools, or streaming access to keep you relaxed and engaged.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="google-reviews" id="reviews">
+    <div class="container">
+        <h2 class=" mb-5">Google Reviews</h2>
+        <div class="row">
+
+            <!-- Review 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=1" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>Arman Ali</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"New Look’s business model encompasses various strategies, including eCommerce, direct selling, franchising, and a mobile-first approach. The company has also embraced technology trends, integrating AI-driven customer service and virtual fitting rooms to enhance customer experience ."</p>
+                    <a href="https://g.co/kgs/v8RZ68L" target="_blank" class="review-link">Read on Google</a>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex  mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=2" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>Amir Khaled</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>
+                        I took my son here, and I couldn't be more pleased with the experience. From the moment we walked in, the atmosphere was welcoming and friendly. The shop is clean, well-organized, and has a great vibe with its modern yet classic decor.
+
+                        The haircut itself was top-notch. The attention to detail was impressive, and the barber didn't rush, ensuring everything was perfect. My son left the shop looking sharp and feeling confident.
+
+                        Overall, exceeded my expectations. Highly recommended!
+                    </p>
+                    <a href="https://g.co/kgs/gcmxdHZ" target="_blank" class="review-link">Read on Google</a>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>Dr. Ali A</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>Faisal is great. Been there multiple times and he’s never let me down. solid haircuts every time.</p>
+                    <a href="https://g.co/kgs/rGixHFa" target="_blank" class="review-link">Read on Google</a>
+                </div>
+            </div>
+            <!-- Review 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex  mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>amer jammal</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>New Look is the best in the field of hair care and men's grooming. With expertise and professionalism, it offers a personalized and unique experience for each client, using the latest techniques and the finest products. If you're looking for excellence and a transformation in your appearance, New Look is the perfect choice to achieve that.</p>
+                    <a href="https://g.co/kgs/x7gqDCf" target="_blank" class="review-link">Read on Google</a>
+                </div>
+            </div>
+            <!-- Review 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex  mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>Omar Tayfour</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>
+                        I recently had the pleasure of visiting this extraordinary barbershop/salon, and I must say, it definitely exceeds all expectations. Just know that from the moment you walk in, you're in for a treat. The staff are true artists and professionals – very experienced, super friendly, and masters of their craft. Personally, my hair has never looked this good, and the beard work was nothing short of amazing. They take all the time needed to understand exactly what you want and execute it with precision.
+
+                        What sets this place apart is the overall experience. It's not just a haircut; it's more of a true event. The ambiance is inviting, and the cleanliness is top-notch. The welcoming cup of coffee is a very nice touch, setting the tone for a relaxing time. During your haircut, you get your own screen with access to YouTube or other apps, which I find to be a fantastic way to make the most out of your time there. You can even bring your own laptop to work on! The attention to such details and ensuring the customer's comfort is truly commendable.
+
+                        Moreover, the location is very easy to get to, with nearby public parking, making the visit hassle-free. What's more, you can always ask them for advice on hair care or product recommendations, and they are ever-ready to assist.
+
+                        While the entire journey might take a bit longer than your average barbershop, expect to invest around 2 hours there, but it's all well spent and worth it.
+
+                        So, if you're looking for more than just a haircut and an experience that leaves you feeling pampered and looking sharp, this is the place to be. The skilled barbers, welcoming atmosphere, simple to reach location and added perks make it a five-star experience.
+                    </p>
+                    <a href="https://g.co/kgs/YmLwVX7" target="_blank" class="review-link">Read on Google</a>
+                </div>
+            </div>
+            <!-- Review 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="review-card">
+                    <div class="d-flex  mb-2">
+                        <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
+                        <div>
+                            <strong>Amir Entezari</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>These people are true artists and master in what they do. They are the most professional hair artists I've been to. The attention to detail and customer care is extraordinary. I highly recommend them 10/10.</p>
+                    <a href="https://g.co/kgs/hwLSq9T" target="_blank" class="review-link">Read on Google</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="google-reviews" id="reviews">
-        <div class="container">
-            <h2 class=" mb-5">Google Reviews</h2>
-            <div class="row">
-
-                <!-- Review 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=1" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>Arman Ali</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>"New Look’s business model encompasses various strategies, including eCommerce, direct selling, franchising, and a mobile-first approach. The company has also embraced technology trends, integrating AI-driven customer service and virtual fitting rooms to enhance customer experience ."</p>
-                        <a href="https://g.co/kgs/v8RZ68L" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex  mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=2" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>Amir Khaled</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>
-                            I took my son here, and I couldn't be more pleased with the experience. From the moment we walked in, the atmosphere was welcoming and friendly. The shop is clean, well-organized, and has a great vibe with its modern yet classic decor.
-
-                            The haircut itself was top-notch. The attention to detail was impressive, and the barber didn't rush, ensuring everything was perfect. My son left the shop looking sharp and feeling confident.
-
-                            Overall, exceeded my expectations. Highly recommended!
-                        </p>
-                        <a href="https://g.co/kgs/gcmxdHZ" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>Dr. Ali A</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>Faisal is great. Been there multiple times and he’s never let me down. solid haircuts every time.</p>
-                        <a href="https://g.co/kgs/rGixHFa" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-                <!-- Review 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex  mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>amer jammal</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>New Look is the best in the field of hair care and men's grooming. With expertise and professionalism, it offers a personalized and unique experience for each client, using the latest techniques and the finest products. If you're looking for excellence and a transformation in your appearance, New Look is the perfect choice to achieve that.</p>
-                        <a href="https://g.co/kgs/x7gqDCf" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-                <!-- Review 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex  mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>Omar Tayfour</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>
-                            I recently had the pleasure of visiting this extraordinary barbershop/salon, and I must say, it definitely exceeds all expectations. Just know that from the moment you walk in, you're in for a treat. The staff are true artists and professionals – very experienced, super friendly, and masters of their craft. Personally, my hair has never looked this good, and the beard work was nothing short of amazing. They take all the time needed to understand exactly what you want and execute it with precision.
-
-                            What sets this place apart is the overall experience. It's not just a haircut; it's more of a true event. The ambiance is inviting, and the cleanliness is top-notch. The welcoming cup of coffee is a very nice touch, setting the tone for a relaxing time. During your haircut, you get your own screen with access to YouTube or other apps, which I find to be a fantastic way to make the most out of your time there. You can even bring your own laptop to work on! The attention to such details and ensuring the customer's comfort is truly commendable.
-
-                            Moreover, the location is very easy to get to, with nearby public parking, making the visit hassle-free. What's more, you can always ask them for advice on hair care or product recommendations, and they are ever-ready to assist.
-
-                            While the entire journey might take a bit longer than your average barbershop, expect to invest around 2 hours there, but it's all well spent and worth it.
-
-                            So, if you're looking for more than just a haircut and an experience that leaves you feeling pampered and looking sharp, this is the place to be. The skilled barbers, welcoming atmosphere, simple to reach location and added perks make it a five-star experience.
-                        </p>
-                        <a href="https://g.co/kgs/YmLwVX7" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-                <!-- Review 6 -->
-                <div class="col-md-4 mb-4">
-                    <div class="review-card">
-                        <div class="d-flex  mb-2">
-                            <!-- <img src="https://i.pravatar.cc/50?u=3" alt="User" class="rounded-circle me-3" width="50" height="50"> -->
-                            <div>
-                                <strong>Amir Entezari</strong>
-                                <div class="stars">★★★★★</div>
-                            </div>
-                        </div>
-                        <p>These people are true artists and master in what they do. They are the most professional hair artists I've been to. The attention to detail and customer care is extraordinary. I highly recommend them 10/10.</p>
-                        <a href="https://g.co/kgs/hwLSq9T" target="_blank" class="review-link">Read on Google</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
-    </section>
+    </div>
+    <br><br>
+</section>

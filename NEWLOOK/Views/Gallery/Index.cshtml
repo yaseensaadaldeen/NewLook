@@ -6,7 +6,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
 }
-
+@{
+    ViewData["HideCart"] = true;
+}
 <br>
 <section class="about section pt-2 pt-md-5" id="gallery">
     <div class="container">

@@ -17,6 +17,7 @@ namespace NEWLOOK.Controllers
 
         public IActionResult Index()
         {
+          
             var viewModel = new HomeViewModel
             {
                 Galleries = _context.Galleries.OrderBy(g => g.Id).Take(6).ToList(),
@@ -25,7 +26,28 @@ namespace NEWLOOK.Controllers
             };
             return View(viewModel);
         }
-
+        [HttpGet]
+        public IActionResult Index(string success )
+        {
+            if (!string.IsNullOrEmpty(success) && success.ToLower() == "true")
+            {
+                TempData["SuccessMessage"] = "Your message was sent successfully.";
+                return RedirectToAction("Index");
+            }
+            var viewModel = new HomeViewModel
+            {
+                Galleries = _context.Galleries.OrderBy(g => g.Id).Take(6).ToList(),
+                Teams = _context.Teams.OrderBy(g => g.Id).Take(3).ToList(),
+                ServicesType = _context.ServiceTypes.OrderBy(g => g.Id).Take(3).ToList()
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public IActionResult Logout(string returnUrl = "/")
+        {
+            HttpContext.Session.Clear(); // Clear all session data
+            return Redirect(returnUrl);  // Redirect back to the current page
+        }
         public IActionResult Privacy()
         {
             return View();

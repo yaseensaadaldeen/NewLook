@@ -5,11 +5,16 @@
   
 
 }
+@{
+    ViewData["HideCart"] = true;
+}
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     var userId = HttpContextAccessor.HttpContext.Session.GetInt32("UserId");
     var userName = HttpContextAccessor.HttpContext.Session.GetString("UserName");
 }
+<section id="team" class="contact-section pt-2 pt-md-5">
+
 <div class="container">
 
 
@@ -73,3 +78,4 @@
     }
 </div>
 </div>
+</section>

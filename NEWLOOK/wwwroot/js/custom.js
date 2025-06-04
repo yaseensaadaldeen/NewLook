@@ -87,92 +87,6 @@ function initializeGalleryFilter() {
         });
     });
 }
-
-// SHOPPING CART FUNCTIONALITY
-function initializeShoppingCart() {
-    const chooseButtons = document.querySelectorAll('.choose-service');
-    const cartSection = document.getElementById('cart-section');
-    const cartItemsContainer = document.getElementById('cart-items');
-    const totalCostElement = document.getElementById('total-cost');
-    const clearCartButton = document.getElementById('clear-cart');
-    const minimizeCartButton = document.getElementById('minimize-cart');
-    const showCart = document.getElementById('show-cart');
-    const showCartTotal = document.getElementById('show-cart-total');
-    const openCartButton = document.getElementById('open-cart-button');
-
-    let cartItems = [];
-    let totalCost = 0;
-
-    function openCart() {
-        cartSection.style.display = 'block';
-        showCart.style.display = 'none';
-    }
-
-    function closeCart() {
-        cartSection.style.display = 'none';
-        if (cartItems.length > 0) {
-            showCart.style.display = 'block';
-        }
-    }
-
-    function updateCart() {
-        cartItemsContainer.innerHTML = '';
-        cartItems.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('service-item');
-            itemElement.innerHTML = `
-                <span>${item.name}</span>
-                <span>$${item.cost}</span>
-                <button class="remove-item btn btn-sm btn-danger" data-index="${index}">&times;</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-        });
-
-        totalCost = cartItems.reduce((sum, item) => sum + item.cost, 0);
-        totalCostElement.innerText = totalCost.toFixed(2);
-        showCartTotal.innerText = `$${totalCost.toFixed(2)}`;
-
-        // Add event listeners to remove buttons
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function () {
-                const index = parseInt(this.dataset.index);
-                cartItems.splice(index, 1);
-                updateCart();
-                if (cartItems.length === 0) {
-                    closeCart();
-                    showCart.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Event Listeners
-    chooseButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            const serviceName = this.dataset.name;
-            const serviceCost = parseFloat(this.dataset.cost);
-
-            cartItems.push({ name: serviceName, cost: serviceCost });
-            updateCart();
-            openCart();
-        });
-    });
-
-    clearCartButton.addEventListener('click', function () {
-        cartItems = [];
-        totalCost = 0;
-        updateCart();
-        closeCart();
-    });
-
-    minimizeCartButton.addEventListener('click', closeCart);
-    showCart.addEventListener('click', openCart);
-    openCartButton?.addEventListener('click', function (e) {
-        e.preventDefault();
-        openCart();
-    });
-}
-
 // VIDEO PLAYBACK FUNCTIONALITY
 function initializeVideo() {
     const video = document.querySelector(".hero-video");
@@ -252,4 +166,44 @@ $(document).ready(function () {
         // On hover: reset timer and remove fade-up
         $alert.hover(clearDismissTimer, startDismissTimer);
     });
-});
+}); function showChoice() {
+    document.getElementById("contactChoice").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+// Close the choice popup and overlay
+function closeChoice() {
+    document.getElementById("contactChoice").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
+// Get form data values from your inputs (match your actual input names)
+function getFormData() {
+    const name = document.querySelector('[name="name"]').value;
+    const email = document.querySelector('[name="email"]').value;
+    const message = document.querySelector('[name="message"]').value;
+    return { name, email, message };
+}
+
+// Submit form normally via email (actual form submission)
+function sendViaEmail() {
+    // Optional: validate form here again if you want
+
+    // Submit the form
+    document.getElementById("contact-form").submit();
+
+    // Close popup
+    closeChoice();
+}
+
+// Open WhatsApp chat with the message text
+function sendViaWhatsApp() {
+    const { name, email, message } = getFormData();
+    const text = encodeURIComponent(
+        `New Contact Message:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
+    );
+    const phone = "971586807722"; // Your WhatsApp number without "+" or spaces
+    window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+
+    closeChoice();
+}

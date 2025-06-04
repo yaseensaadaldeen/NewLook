@@ -3,6 +3,9 @@
 *@
 @{
 }
+@{
+    ViewData["HideCart"] = true;
+}
 <section id="contact" class="contact-section pt-2 pt-md-5">
     <div class="container ">
         <div class="row mb-5">
@@ -61,13 +64,14 @@
             </div>
 
             <!-- Address -->
+
             <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-down" data-aos-delay="400">
                 <div class="contact-box">
                     <div class="icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <h5>Address</h5>
-                    <p style="color: whitesmoke;"><a href="https://maps.app.goo.gl/zeMd7qRSQRQzd32TA" target="_blank">Umm Al sheif -SKB Plaza properties Office No: 104 - Dubai - United Arab Emirates</a></p>
+                    <p style="color: whitesmoke;"><a href="https://maps.app.goo.gl/zeMd7qRSQRQzd32TA" target="_blank">Umm Al sheif -SKB Plaza - Office No:104-Dubai-UAE</a></p>
 
                 </div>
             </div>
@@ -88,35 +92,32 @@
                 </div>
             </div>
         </div>
+        <form id="contact-form" action="https://formsubmit.co/yassensad5@gmail.com" method="POST" class="contact-form">
 
-        <!-- Contact Form -->
-        <div class="row mt-5">
-            <div class="col-lg-8">
-                <h3 class="mb-4 " data-aos="fade-up">Send Us a Message</h3>
-                <form action="#" method="post" class="contact-form" data-aos="fade-up" data-aos-delay="600">
-                    <div class="mb-3" data-aos="fade-up" data-aos-delay="100">
-                        <input type="text" class="form-control" name="cf-name" placeholder="Your Name" required>
-                    </div>
-                    <div class="mb-3" data-aos="fade-up" data-aos-delay="200">
-                        <input type="email" class="form-control" name="cf-email" placeholder="Your Email" required>
-                    </div>
-                    <div class="mb-3" data-aos="fade-up" data-aos-delay="300">
-                        <textarea class="form-control" rows="5" name="cf-message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                        <button type="submit" class="btn btn-gold">Send Message</button>
-                    </div>
+            <!-- Contact Form -->
+            <div class="row mt-5 justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="mb-4" data-aos="fade-up">Send Us a Message</h3>
 
-                </form>
-                <br><br>
+                    <!-- Hidden Inputs -->
+                    <input type="hidden" name="_subject" value="New Message from Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://localhost:7270/ContactUs?success=true">
 
+                    <!-- Form Fields -->
+                    <input type="text" name="name" placeholder="Your Name" required class="form-control mb-3">
+                    <input type="email" name="email" placeholder="Your Email"  required class="form-control mb-3">
+                    <textarea name="message" rows="5" placeholder="Your Message" required class="form-control mb-3"></textarea>
 
-                <div class="row mt-5">
-                    <div class="col-lg-10">
+                    <button type="button" onclick="showChoice()" class="btn btn-gold">Send Message</button>
+                    <p id="my-form-status" style="margin-top: 10px; color: white;"></p>
+
+                    <!-- Map Section Centered -->
+                    <div class="mt-5">
                         <h3 class="mb-4" data-aos="fade-up">Find Us on the Map</h3>
                         <div data-aos="zoom-in" data-aos-delay="200">
                             <div class="map-container">
-
                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.310664060015!2d55.2032153!3d25.125185800000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b86b3f70de5%3A0x8937aa5b54d1fd7d!2sNew%20Look%20Business!5e0!3m2!1sen!2s!4v1746466624200!5m2!1sen!2s"
                                         width="100%"
                                         height="350"
@@ -126,12 +127,29 @@
                                         referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
+
+            <div id="overlay" class=".nlb-overlay"></div>
+            <div id="contactChoice" class="nlb-contact-choice">
+                <button type="button" onclick="closeChoice()" class="nlb-close-btn">
+                    <i class="fa-solid fa-xmark" style=" color: white;"></i>
+                </button>
+                <p class="nlb-choice-title">Send via</p>
+                <div class="nlb-choice-buttons">
+                    <button type="submit" class="btn btn-gold">
+                        <i class="fa-solid fa-envelope"></i>
+                    </button>
+                    <button type="button" onclick="sendViaWhatsApp()" class="nlb-choice-whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
     </div>
+
 </section>

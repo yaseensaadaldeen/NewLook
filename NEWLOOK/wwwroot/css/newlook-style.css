@@ -2433,3 +2433,259 @@ body, html {
         transform: translateY(-20px);
     }
 }
+p.text-light {
+    padding-top:10px;
+}
+.nlb-contact-section {
+    padding-top: 2rem;
+    padding-top: var(--bs-pt-md, 3rem);
+    color: whitesmoke;
+}
+
+.nlb-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.nlb-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.nlb-col {
+    flex: 1;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.nlb-col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.nlb-col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.nlb-col-lg-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+}
+
+.nlb-col-lg-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%;
+}
+
+.nlb-breadcrumb {
+    padding: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+
+.nlb-breadcrumb-item a,
+.nlb-link-primary {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nlb-arrow-icon {
+    fill: var(--primary-color);
+    margin: 0 0.5rem;
+}
+
+.nlb-scissors-icon {
+    stroke: currentColor;
+}
+
+.nlb-blade-moving {
+    /* add animation if needed */
+}
+
+.nlb-section-title {
+    color: whitesmoke;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.nlb-section-subtitle {
+    color: whitesmoke;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.nlb-contact-box {
+    background: #222;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: whitesmoke;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+    .nlb-contact-box:hover {
+        transform: translateY(-5px);
+    }
+
+.nlb-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.nlb-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nlb-text-white {
+    color: whitesmoke;
+}
+
+.nlb-social-links a {
+    color: var(--primary-color);
+    font-size: 22px;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+    .nlb-social-links a:hover {
+        color: #f7c948;
+    }
+
+.nlb-contact-form {
+    max-width: 600px;
+    width: 100%;
+}
+
+.nlb-form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #333;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: background-color 0.3s ease;
+}
+
+    .nlb-form-control::placeholder {
+        color: #bbb;
+    }
+
+    .nlb-form-control:focus {
+        background-color: #444;
+        outline: none;
+        box-shadow: 0 0 5px var(--primary-color);
+    }
+
+.nlb-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.nlb-btn-gold {
+    background-color: #f7c948;
+    color: #222;
+}
+
+    .nlb-btn-gold:hover {
+        background-color: #d6b238;
+    }
+
+.nlb-form-status {
+    margin-top: 10px;
+    color: white;
+    min-height: 1.5em;
+}
+
+.nlb-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 998;
+}
+
+.nlb-contact-choice {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(40 41 21 / 90%);
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    width: 260px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+.nlb-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.nlb-choice-title {
+    color: white;
+    background-color: #000000a8;
+    padding: 8px 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.nlb-choice-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nlb-choice-email-btn,
+.nlb-choice-whatsapp-btn {
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.nlb-choice-email-btn {
+    background-color: #007bff;
+    font-size: 20px;
+}
+
+.nlb-choice-whatsapp-btn {
+    background-color: #25D366;
+    font-size: 22px;
+}
