@@ -1,13 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NEWLOOK.Models.NewLook;
+using static NEWLOOK.Models.NewLook.NewLookContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // ? Register services before building the app
 builder.Services.AddControllersWithViews();
-
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<NewLookContext>(options =>
-    options.UseSqlServer("Server=VM0D7D1F9\\SQLSERVER;Database=NewLook;Trusted_Connection=True;TrustServerCertificate=true;"));
+options.UseSqlServer(connectionString));
 
 // ? Add session services
 builder.Services.AddHttpContextAccessor();
@@ -16,6 +18,8 @@ builder.Services.AddSession(options => {
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+builder.Services.Configure<ImageSettings>(
+    builder.Configuration.GetSection("ImageSettings"));
 
 var app = builder.Build();
 

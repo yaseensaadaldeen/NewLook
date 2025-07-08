@@ -135,16 +135,16 @@ public partial class NewLookContext : DbContext
             entity.ToTable("mst_Service");
 
             entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Active)
+                .HasMaxLength(2)
+                .HasDefaultValue("Y")
+                .HasColumnName("active");
             entity.Property(e => e.SerDesc)
                 .HasMaxLength(500)
                 .HasColumnName("ser_desc");
             entity.Property(e => e.SerName)
                 .HasMaxLength(50)
                 .HasColumnName("ser_name");
-            entity.Property(e => e.ServiceIconImage)
-                .HasMaxLength(500)
-                .HasDefaultValue("")
-                .HasColumnName("service_icon_image");
         });
 
         modelBuilder.Entity<MstServiceImage>(entity =>

@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NEWLOOK.Models.NewLook;
+using static NEWLOOK.Models.NewLook.NewLookContext;
 
 
 namespace NEWLOOK.Controllers
@@ -8,10 +10,13 @@ namespace NEWLOOK.Controllers
     public class GalleryController : Controller
     {
         private readonly NewLookContext _context;
-
-        public GalleryController(NewLookContext context)
+        private readonly IWebHostEnvironment _env;
+        private readonly ImageSettings _imgSettings;
+        public GalleryController(NewLookContext context, IWebHostEnvironment env, IOptions<ImageSettings> imgSettings)
         {
             _context = context;
+            _env = env;
+            _imgSettings = imgSettings.Value;
         }
         public async Task<IActionResult> Index()
         {
@@ -28,8 +33,20 @@ namespace NEWLOOK.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Gallery gallery)
         {
+            try
+            {
+
+
             if (gallery.ImageFile != null && gallery.ImageFile.Length > 0)
             {
+                long maxBytes = _imgSettings.MaxImageSizeInMB * 1024 * 1024;
+
+                if (gallery.ImageFile.Length > maxBytes)
+                {
+                    TempData["ErrorMessage"] = $"Image must be {_imgSettings.MaxImageSizeInMB} MB or smaller.";
+                    ModelState.AddModelError("ImageFile", $"Image must be {_imgSettings.MaxImageSizeInMB} MB or smaller.");
+                    return View(gallery);
+                }
                 var fileName = Path.GetFileName(gallery.ImageFile.FileName);
                 var uploads = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/gallery");
                 Directory.CreateDirectory(uploads);
@@ -51,6 +68,12 @@ namespace NEWLOOK.Controllers
             }
 
             return View(gallery);
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Error with adding the gallary image";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         [HttpPost]

@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Our Creative Team";
     Layout = "~/Views/Shared/_Layout.cshtml";
-  
+
 
 }
 @{
@@ -15,67 +15,73 @@
 }
 <section id="team" class="contact-section pt-2 pt-md-5">
 
-<div class="container">
+    <div class="container">
 
 
-<nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
-    <ol class="breadcrumb bg-transparent px-0 mb-0">
-        <li class="breadcrumb-item">
-            <a href="@Url.Action("Index", "Home")" style="color: var(--primary-color);">Home</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" style="    fill: var(--primary-color);">
-                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
-            </svg>
-            <a href="#" style="color: var(--primary-color);">
-                Team
-            </a>
-            <!-- Animated scissors -->
-            <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
-                <g>
-                    <line x1="10" y1="10" x2="30" y2="30" />
-                    <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
-                </g>
-                <circle cx="10" cy="10" r="3" fill="currentColor" />
-                <circle cx="10" cy="30" r="3" fill="currentColor" />
-            </svg>
-        </li>
+        <nav aria-label="breadcrumb" class="animated-breadcrumb d-flex align-items-center mb-3 pt-4 pt-md-2">
+            <ol class="breadcrumb bg-transparent px-0 mb-0">
+                <li class="breadcrumb-item">
+                    <a href="@Url.Action("Index", "Home")" style="color: var(--primary-color);">Home</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16" style="    fill: var(--primary-color);">
+                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+                    </svg>
+                    <a href="#" style="color: var(--primary-color);">
+                        Team
+                    </a>
+                    <!-- Animated scissors -->
+                    <svg class="scissors-icon ms-2" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="currentColor" stroke-width="3">
+                        <g>
+                            <line x1="10" y1="10" x2="30" y2="30" />
+                            <line class="blade-moving" x1="10" y1="30" x2="30" y2="10" />
+                        </g>
+                        <circle cx="10" cy="10" r="3" fill="currentColor" />
+                        <circle cx="10" cy="30" r="3" fill="currentColor" />
+                    </svg>
+                </li>
 
-    </ol>
-</nav>
-    <h1>@ViewData["Title"]</h1>
-@if (userId.HasValue)
-{
-    <p>
-        <button class="golden-btn">  <a asp-action="Create">Create New</a></button>
-    </p>
-}
-<div class="team-container">
-    @foreach (var member in Model)
-    {
-        <div class="team-card">
-            <img src="@member.ImageLink" alt="@member.EmpName" class="member-image">
-            <div class="member-info">
-                <h3 class="member-name">@member.EmpName</h3>
-                <p class="member-detail"><strong>Nationality:</strong> @member.Nationality</p>
-                <p class="member-detail"><strong>Experience:</strong> @member.Experiances</p>
-                <p class="member-detail"><strong>Languages:</strong> @member.Languages</p>
-            </div>
-
-            <img src="~/images/icons/scissors.png" class="tool-animation scissors-left" alt="Scissors">
-            <img src="~/images/icons/scissors.png" class="tool-animation scissors-right" alt="Scissors">
-            <img src="~/images/icons/comb.png" class="tool-animation comb-top" alt="Comb">
-            <img src="~/images/icons/comb.png" class="tool-animation comb-bottom" alt="Comb">
-
-            @if (userId.HasValue)
+            </ol>
+        </nav>
+        <h1>@ViewData["Title"]</h1>
+        @if (userId.HasValue)
+        {
+            <p>
+                <a asp-action="Create" class="golden-btn">   Create New</a>
+            </p>
+        }
+        <div class="team-container">
+            @foreach (var member in Model)
             {
-                <form asp-action="Delete" asp-controller="Teams" method="post" class="remove-button-form" onsubmit="return confirm('Are you sure you want to remove this team member?');">
-                    @Html.AntiForgeryToken()
-                    <input type="hidden" name="id" value="@member.Id" />
-                    <button type="submit" class="remove-button">&times;</button>
-                </form>
-            }
+                <div class="team-card">
+                    <img src="@member.ImageLink" alt="@member.EmpName" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">@member.EmpName</h3>
+                        <p class="member-detail"><strong>Nationality:</strong> @member.Nationality</p>
+                        <p class="member-detail"><strong>Experience:</strong> @member.Experiances</p>
+                        <p class="member-detail"><strong>Languages:</strong> @member.Languages</p>
+                    </div>
 
+                    <img src="~/images/icons/scissors.png" class="tool-animation scissors-left" alt="Scissors">
+                    <img src="~/images/icons/scissors.png" class="tool-animation scissors-right" alt="Scissors">
+                    <img src="~/images/icons/comb.png" class="tool-animation comb-top" alt="Comb">
+                    <img src="~/images/icons/comb.png" class="tool-animation comb-bottom" alt="Comb">
+
+                    @if (userId.HasValue)
+                    {
+                        <div class="button-group" style="display:flex; justify-content:space-between; margin-top:10px;">
+                            <!-- Edit Button -->
+                            <a asp-action="Edit" asp-controller="Teams" asp-route-id="@member.Id" style="    position: absolute;top: 5px;right: 40px;background: yellow;z-index: 10;border-radius: 50px;" class="btn btn-sm ed me-2 fas fa-edit"></a>
+
+                            <!-- Delete Form -->
+                            <form asp-action="Delete" asp-controller="Teams" method="post" class="remove-button-form" onsubmit="return confirm('Are you sure you want to remove this team member?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@member.Id" />
+                                <button type="submit" class="remove-button">&times;</button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            }
         </div>
-    }
-</div>
-</div>
+
+    </div>
 </section>

@@ -202,7 +202,7 @@ function sendViaWhatsApp() {
     const text = encodeURIComponent(
         `New Contact Message:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`
     );
-    const phone = "971586807722"; // Your WhatsApp number without "+" or spaces
+    const phone = "971564412920"; // Your WhatsApp number without "+" or spaces
     window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
 
     closeChoice();

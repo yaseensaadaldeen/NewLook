@@ -1,0 +1,29 @@
+﻿@model NEWLOOK.Models.NewLook.MstService
+
+@{
+    ViewData["Title"] = "Edit Master Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="about section pt-2 pt-md-5" id="mstser-edit">
+    <div class="container">
+        <h1>Edit Master Service</h1>
+        <hr />
+        <div class="signup-border">
+            <form asp-action="EditMasterService" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="SerName" class="control-label"></label>
+                    <input asp-for="SerName" class="form-control" />
+                    <span asp-validation-for="SerName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

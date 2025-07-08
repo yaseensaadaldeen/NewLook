@@ -125,7 +125,7 @@ public class BookingController : Controller
                             *Selected Services:*
                             {string.Join("%0A", services.Select(s => $"• {s.SerTypeName} - ${s.Price}"))}";
 
-            var whatsappNumber = "+971586807722"; // Change to your number
+            var whatsappNumber = "+971564412920"; // Change to your number
             var whatsappUrl = $"https://wa.me/{whatsappNumber}?text={Uri.EscapeDataString(message)}";
             TempData["SuccessMessage"] = $"🎉 Your booking was successfully made , Thank you for choosing us.";
             return Redirect(whatsappUrl);

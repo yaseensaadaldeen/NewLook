@@ -1,72 +1,74 @@
-﻿@model NEWLOOK.Models.NewLook.Team
+﻿@using Microsoft.Extensions.Options
+@using NEWLOOK.Models.NewLook
+@model NEWLOOK.Models.NewLook.Team
+@inject IOptions<ImageSettings> ImgSettings
 
 @{
-    ViewData["Title"] = "Edit";
+    var maxSizeMb = ImgSettings.Value.MaxImageSizeInMB;
+    ViewData["Title"] = "Edit Team Member";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<section class="about section pt-2 pt-md-5">
+    <div class="container">
+        <h1>Edit Team Member</h1>
+        <hr />
+        <div class="signup-border">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<h4>Team</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="EmpName" class="control-label"></label>
-                <input asp-for="EmpName" class="form-control" />
-                <span asp-validation-for="EmpName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpSkills" class="control-label"></label>
-                <input asp-for="EmpSkills" class="form-control" />
-                <span asp-validation-for="EmpSkills" class="text-danger"></span>
-            </div>
-           
-            <div class="form-group">
-                <label asp-for="Nationality" class="control-label"></label>
-                <input asp-for="Nationality" class="form-control" />
-                <span asp-validation-for="Nationality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Experiances" class="control-label"></label>
-                <input asp-for="Experiances" class="form-control" />
-                <span asp-validation-for="Experiances" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Languages" class="control-label"></label>
-                <input asp-for="Languages" class="form-control" />
-                <span asp-validation-for="Languages" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CountryWork" class="control-label"></label>
-                <input asp-for="CountryWork" class="form-control" />
-                <span asp-validation-for="CountryWork" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageLink" class="control-label"></label>
-                <input asp-for="ImageLink" class="form-control" />
-                <span asp-validation-for="ImageLink" class="text-danger"></span>
-            </div>
-           
-            <div class="form-group">
-                <label asp-for="Active" class="control-label"></label>
-                <input asp-for="Active" class="form-control" />
-                <span asp-validation-for="Active" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="EmpName" class="control-label"></label>
+                    <input asp-for="EmpName" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmpSkills" class="control-label"></label>
+                    <input asp-for="EmpSkills" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Nationality" class="control-label"></label>
+                    <input asp-for="Nationality" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Experiances" class="control-label"></label>
+                    <input asp-for="Experiances" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Languages" class="control-label"></label>
+                    <input asp-for="Languages" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryWork" class="control-label"></label>
+                    <input asp-for="CountryWork" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Update Profile Image</label>
+                    <input type="file" name="imageFile" class="form-control" />
+                    @if (!string.IsNullOrEmpty(Model.ImageLink))
+                    {
+                        <p>Current Image:</p>
+                        <img src="@Model.ImageLink" width="150" />
+                    }
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Active" class="control-label"></label>
+                    <select asp-for="Active" class="form-control">
+                        <option value="Y">Active</option>
+                        <option value="N">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

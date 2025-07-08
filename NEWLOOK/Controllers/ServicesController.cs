@@ -4,24 +4,29 @@ using NEWLOOK.Models.NewLook;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static NEWLOOK.Models.NewLook.NewLookContext;
+using Microsoft.Extensions.Options;
 
 namespace NEWLOOK.Controllers
 {
     public class ServicesController : Controller
     {
         private readonly NewLookContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public ServicesController(NewLookContext context)
+        public ServicesController(NewLookContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
         {
             var services = await _context.MstServices
-                .Include(s => s.ServiceTypes)
-                .Include(s => s.MstServiceImages)
-                .ToListAsync();
+              .Where(ms => ms.Active == "Y")
+              .Include(ms => ms.ServiceTypes.Where(st => st.Active == "Y"))
+              .Include(ms => ms.MstServiceImages)
+              .ToListAsync();
 
             return View(services);
         }
@@ -39,35 +44,33 @@ namespace NEWLOOK.Controllers
 
         public async Task<IActionResult> CreateMasterService(MstService service)
         {
+            try
+            {
+
+           
             ModelState.Remove("Team");
             ModelState.Remove("SerDesc");
-            if (service.IconFile != null && service.IconFile.Length > 0)
+                if (!string.IsNullOrEmpty(service.SerName))
+                {
+                    service.SerDesc="";
+                    _context.Add(service);
+                    await _context.SaveChangesAsync();
+                    ViewBag.Teams = _context.Teams.ToList();
+                    return RedirectToAction(nameof(Index));
+                }
+                else {
+                    TempData["ErrorMessage"] = "Error with adding the service";
+                    return RedirectToAction(nameof(Index));
+                }
+              
+            
+         
+            }
+            catch (Exception)
             {
-                var uploadsFolder = Path.Combine("wwwroot", "images", "services");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
-
-                var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(service.IconFile.FileName);
-                var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await service.IconFile.CopyToAsync(stream);
-                }
-
-                service.ServiceIconImage = "/images/services/" + uniqueFileName;
-
-
-                service.SerDesc="";
-                _context.Add(service);
-                await _context.SaveChangesAsync();
+                TempData["ErrorMessage"] = "Error with adding the service";
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewBag.Teams = _context.Teams.ToList();
-            return View(service);
         }
 
 
@@ -88,38 +91,39 @@ namespace NEWLOOK.Controllers
             return View(service);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> EditMasterService(int id, [Bind("Id,SerName,SerDesc,ServiceIconImage,TeamId")] MstService service)
         {
             if (id != service.Id)
-            {
                 return NotFound();
+            ModelState.Remove("Team");
+            ModelState.Remove("SerDesc");
+            ModelState.Remove("Active");
+
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Teams = _context.Teams.ToList();
+                return View(service);
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
-                {
-                    _context.Update(service);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MstServiceExists(service.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                if (string.IsNullOrEmpty(service.SerDesc))
+                    service.SerDesc = "";
+                service.Active = "Y";
+
+                _context.Update(service);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Teams = _context.Teams.ToList();
-            return View(service);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.MstServices.Any(e => e.Id == service.Id))
+                    return NotFound();
+                throw;
+            }
         }
 
 
@@ -146,7 +150,7 @@ namespace NEWLOOK.Controllers
         {
             // Include the sub-services in the query
             var service = await _context.MstServices
-                .Include(m => m.ServiceTypes) // Include the related sub-services
+                .Include(m => m.ServiceTypes)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (service == null)
@@ -156,23 +160,25 @@ namespace NEWLOOK.Controllers
 
             try
             {
-                // First remove all sub-services
-                foreach (var subService in service.ServiceTypes.ToList())
+                // Soft delete sub-services
+                foreach (var subService in service.ServiceTypes)
                 {
-                    _context.ServiceTypes.Remove(subService);
+                    subService.Active = "N";
+                    _context.ServiceTypes.Update(subService);
                 }
 
-                // Then remove the master service
-                _context.MstServices.Remove(service);
+                // Soft delete master service
+                service.Active = "N";
+                _context.MstServices.Update(service);
 
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Master service and all its sub-services were deleted successfully.";
+                TempData["SuccessMessage"] = "Master service and its sub-services were marked as inactive.";
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateException ex)
             {
-                TempData["ErrorMessage"] = "Unable to delete service. It may be referenced by other records. Error: " + ex.Message;
+                TempData["ErrorMessage"] = "Unable to update service. Error: " + ex.Message;
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -181,6 +187,7 @@ namespace NEWLOOK.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
 
         // Sub-Service CRUD operations
 
@@ -195,6 +202,10 @@ namespace NEWLOOK.Controllers
 
         public async Task<IActionResult> CreateSubService([Bind("SerTypeName,SerTypeDesc,SerTime,Price,MstSerId")] ServiceType serviceType)
         {
+            try
+            {
+
+         
             ModelState.Remove("MstSer");
             ModelState.Remove("active");
             if (ModelState.IsValid)
@@ -205,6 +216,12 @@ namespace NEWLOOK.Controllers
             }
             ViewBag.MasterServices = _context.MstServices.ToList();
             return View(serviceType);
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Error with adding the service";
+                return RedirectToAction(nameof(Index));
+            }
         }
 
 
@@ -227,40 +244,36 @@ namespace NEWLOOK.Controllers
             ViewBag.MasterServices = _context.MstServices.ToList();
             return View(serviceType);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> EditSubService(int id, [Bind("Id,SerTypeName,SerTypeDesc,SerTime,Price,MstSerId")] ServiceType serviceType)
         {
             if (id != serviceType.Id)
-            {
                 return NotFound();
-            }
-
+               ModelState.Remove("MstSer");
+            ModelState.Remove("active");
             if (ModelState.IsValid)
             {
                 try
                 {
+                    serviceType.Active = "Y"; // optional, ensure active
                     _context.Update(serviceType);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ServiceTypeExists(serviceType.Id))
-                    {
                         return NotFound();
-                    }
                     else
-                    {
                         throw;
-                    }
                 }
-                return RedirectToAction(nameof(Index));
             }
+
             ViewBag.MasterServices = _context.MstServices.ToList();
             return View(serviceType);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -275,10 +288,12 @@ namespace NEWLOOK.Controllers
                     return RedirectToAction(nameof(Index));
                 }
 
-                _context.ServiceTypes.Remove(serviceType);
+                // Soft delete by setting Active to "N"
+                serviceType.Active = "N";
+                _context.ServiceTypes.Update(serviceType);
                 await _context.SaveChangesAsync();
 
-                TempData["SuccessMessage"] = "Sub-service deleted successfully.";
+                TempData["SuccessMessage"] = "Sub-service was marked as inactive.";
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)

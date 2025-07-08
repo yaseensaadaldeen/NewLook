@@ -1,5 +1,11 @@
 ﻿@model NEWLOOK.Models.NewLook.Gallery
+@using Microsoft.Extensions.Options
+@using NEWLOOK.Models.NewLook
+@using static NEWLOOK.Models.NewLook.NewLookContext
+@inject IOptions<ImageSettings> ImgSettings
 @{
+    var maxSizeMb = ImgSettings.Value.MaxImageSizeInMB;
+    var maxSizeText = $"{maxSizeMb} MB";
     ViewData["Title"] = "Add Gallery Image";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -24,7 +30,23 @@
         </div>
     </form>
 </div>
-
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+        (() => {
+            const maxMb = @maxSizeMb;
+            const maxBytes = maxMb * 1024 * 1024;
+            const input = document.getElementById('imageFile');
+
+            input.addEventListener('change', () => {
+                const file = input.files[0];
+                if (!file) return;
+
+                if (file.size > maxBytes) {
+                    alert(`Selected image exceeds the limit of ${maxMb} MB.`);
+                    input.value = '';
+                }
+            });
+        })();
+    </script>
 }
