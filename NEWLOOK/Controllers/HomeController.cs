@@ -21,8 +21,8 @@ namespace NEWLOOK.Controllers
             var viewModel = new HomeViewModel
             {
                 Galleries = _context.Galleries.OrderBy(g => g.Id).Take(6).ToList(),
-                Teams = _context.Teams.OrderBy(g => g.Id).Take(3).ToList(),
-                ServicesType = _context.ServiceTypes.OrderBy(g => g.Id).Take(3).ToList()
+                Teams = _context.Teams.Where(a => a.Active == "Y").OrderBy(g => g.Id).Take(3).ToList(),
+                ServicesType = _context.ServiceTypes.Where(a=>a.Active == "Y" && a.MstSer.Active=="Y").OrderBy(g => g.Id).Take(3).ToList()
             };
             return View(viewModel);
         }
@@ -37,8 +37,8 @@ namespace NEWLOOK.Controllers
             var viewModel = new HomeViewModel
             {
                 Galleries = _context.Galleries.OrderBy(g => g.Id).Take(6).ToList(),
-                Teams = _context.Teams.OrderBy(g => g.Id).Take(3).ToList(),
-                ServicesType = _context.ServiceTypes.OrderBy(g => g.Id).Take(3).ToList()
+                Teams = _context.Teams.Where(a => a.Active == "Y").OrderBy(g => g.Id).Take(3).ToList(),
+                ServicesType = _context.ServiceTypes.Where(a => a.Active == "Y" && a.MstSer.Active=="Y").OrderBy(g => g.Id).Take(3).ToList()
             };
             return View(viewModel);
         }

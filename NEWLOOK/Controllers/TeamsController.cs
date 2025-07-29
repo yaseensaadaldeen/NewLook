@@ -140,6 +140,7 @@ namespace NEWLOOK.Controllers
 
             ModelState.Remove("active"); // If you want to ignore this during validation
             ModelState.Remove("ImageLink");
+            ModelState.Remove("imageFile");
             if (ModelState.IsValid)
             {
                 try

@@ -193,7 +193,7 @@ namespace NEWLOOK.Controllers
 
         public IActionResult CreateSubService()
         {
-            ViewBag.MasterServices = _context.MstServices.ToList();
+            ViewBag.MasterServices = _context.MstServices.Where(a=>a.Active == "Y").ToList();
             return View();
         }
 

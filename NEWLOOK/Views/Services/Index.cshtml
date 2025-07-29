@@ -273,6 +273,32 @@
 </script>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const cartSection = document.getElementById('cart-section');
+
+    cartSection.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    cartSection.addEventListener('touchend', function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    }, false);
+
+    function handleSwipeGesture() {
+        const swipeThreshold = 100; // Minimum distance to be considered a swipe
+        if (touchEndX - touchStartX > swipeThreshold) {
+            // Swipe right detected
+            cartSection.style.display = 'none';
+            if (cartItems.length > 0) {
+                document.getElementById('show-cart').style.display = 'block';
+            }
+        }
+    }
+</script>
 
 <script>
      let cartItems = []; // Make it global
